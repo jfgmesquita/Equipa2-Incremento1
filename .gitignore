@@ -1,1 +1,42 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# IntelliJ
+/.idea/
+/*.iml
+/out/
+
+# VS Code
+/.vscode/
+
+# Maven
 /target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/logging.properties
+/release.properties
+
+# Hibernate
+/hibernate.cfg.xml
+
+# JPA
+/META-INF/persistence.xml
+
+# MySQL
+/mysql-connector-java-*.jar
+
+# Logs
+*.log
+
+# Ficheiros gerados pelo sistema operativo
+.DS_Store
+Thumbs.db
