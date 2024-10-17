@@ -29,6 +29,10 @@ public class Utilizador {
         this.morada = morada;
     }
 
+    /**
+     * Construtor padrão para a classe Utilizador.
+     * Inicializa os campos id, nome, email, password e morada com strings vazias.
+     */
     public Utilizador(){
         id = "";
         nome = "";
@@ -36,6 +40,8 @@ public class Utilizador {
         password = "";
         morada = "";
     }
+
+    
 
     /**
      * Obtém o ID do utilizador.
