@@ -10,8 +10,8 @@ public class Profissional extends Utilizador {
     private ArrayList<Avaliacao> avaliacoes; 
 
      public Profissional(String nome, String email, String password, String morada,
-                        String[] servicos, String especialidade, int experiencia, 
-                        double valorHora, double[] avaliacoes) {
+                        String, String especialidade, int experiencia, 
+                        double valorHora) {
         super(nome, email, password, morada);
         this.servicos = new ArrayList<>();
         this.especialidade = especialidade;
