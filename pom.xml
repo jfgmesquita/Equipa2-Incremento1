@@ -62,13 +62,13 @@
       <version>8.0.33</version>
     </dependency>
 
+    <!-- Dependência do Lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.34</version>
       <scope>provided</scope>
     </dependency>
-
   </dependencies>
 
   <build>
