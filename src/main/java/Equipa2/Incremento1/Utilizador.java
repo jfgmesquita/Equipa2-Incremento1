@@ -117,6 +117,9 @@ public class Utilizador {
      */
     @Override
     public String toString() {
-        return "ID: " + id + ", Nome: " + nome + ", Email: " + email + ", Morada: " + morada;
+        return "ID: " + id + "\n" + 
+           "Nome: " + nome + "\n" + 
+           "Email: " + email + "\n" + 
+           "Morada: " + morada;
     }
 }
