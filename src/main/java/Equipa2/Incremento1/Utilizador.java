@@ -30,6 +30,20 @@ public class Utilizador {
     }
 
     /**
+     * Construtor padrão para a classe Utilizador.
+     * Inicializa os campos id, nome, email, password e morada com strings vazias.
+     */
+    public Utilizador(){
+        id = "";
+        nome = "";
+        email = "";
+        password = "";
+        morada = "";
+    }
+
+    
+
+    /**
      * Obtém o ID do utilizador.
      *
      * @return ID do utilizador.
