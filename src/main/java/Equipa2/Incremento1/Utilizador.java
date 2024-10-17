@@ -29,6 +29,14 @@ public class Utilizador {
         this.morada = morada;
     }
 
+    public Utilizador(){
+        id = "";
+        nome = "";
+        email = "";
+        password = "";
+        morada = "";
+    }
+
     /**
      * Obtém o ID do utilizador.
      *
