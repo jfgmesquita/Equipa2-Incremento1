@@ -1,12 +1,16 @@
 package Equipa2.Incremento1;
 
 import java.util.UUID;
-
+import jakarta.persistence.*;
 /**
  * Classe que representa um utilizador.
  */
+@Entity
+@Table(name = "Utilizador")
 public class Utilizador {
-    private String id;
+	@Id
+	@GeneratedValue
+    private UUID id;
     private String nome;
     private String email;
     private String password;
@@ -22,7 +26,7 @@ public class Utilizador {
      * @param morada   Morada do utilizador.
      */
     public Utilizador(String nome, String email, String password, String morada) {
-        id = UUID.randomUUID().toString();
+        id = UUID.randomUUID();
         this.nome = nome;
         this.email = email;
         this.password = password;
@@ -34,7 +38,7 @@ public class Utilizador {
      * Inicializa os campos id, nome, email, password e morada com strings vazias.
      */
     public Utilizador(){
-        id = "";
+        id = null;
         nome = "";
         email = "";
         password = "";
@@ -48,7 +52,10 @@ public class Utilizador {
      *
      * @return ID do utilizador.
      */
-    public String getId() {
+    @Id
+    @Column(name = "utilizador_id")
+    @GeneratedValue(strategy = GenerationType.UUID)
+    public UUID getId() {
         return id;
     }
 
@@ -131,7 +138,7 @@ public class Utilizador {
      */
     @Override
     public String toString() {
-        return "ID: " + id + "\n" + 
+        return "ID: " + id.toString() + "\n" + 
            "Nome: " + nome + "\n" + 
            "Email: " + email + "\n" + 
            "Morada: " + morada;
