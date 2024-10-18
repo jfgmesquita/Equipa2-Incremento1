@@ -16,7 +16,6 @@ public class Solicitacao {
 	private Cliente cliente;
 	private Profissional profissional;
 	private String endereco;
-	private Pagamento pagamento;
 	private LocalDateTime data;
   
   /**
@@ -28,11 +27,10 @@ public class Solicitacao {
    * @param pagamento		Informações de pagamento.
    * @param data			Data e horas
    */
-  public Solicitacao(Cliente cliente, Profissional profissional, String endereco, Pagamento pagamento, String data) {
+  public Solicitacao(Cliente cliente, Profissional profissional, String endereco, String data) {
     this.cliente = cliente;
     this.profissional = profissional;
     this.endereco = endereco;
-    this.pagamento = pagamento;
     status = StatusServico.PENDENTE;
 
     //exemplo do formato da string: "15:30 28-10-2024"
@@ -49,7 +47,6 @@ public class Solicitacao {
     cliente = null;
     profissional = null;
     endereco = "";
-    pagamento = null;
     data = null;
   }
 }
