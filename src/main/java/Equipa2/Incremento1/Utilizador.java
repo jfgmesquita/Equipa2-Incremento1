@@ -30,6 +30,20 @@ public class Utilizador {
     }
 
     /**
+     * Construtor padrão para a classe Utilizador.
+     * Inicializa os campos id, nome, email, password e morada com strings vazias.
+     */
+    public Utilizador(){
+        id = "";
+        nome = "";
+        email = "";
+        password = "";
+        morada = "";
+    }
+
+    
+
+    /**
      * Obtém o ID do utilizador.
      *
      * @return ID do utilizador.
@@ -117,6 +131,9 @@ public class Utilizador {
      */
     @Override
     public String toString() {
-        return "ID: " + id + ", Nome: " + nome + ", Email: " + email + ", Morada: " + morada;
+        return "ID: " + id + "\n" + 
+           "Nome: " + nome + "\n" + 
+           "Email: " + email + "\n" + 
+           "Morada: " + morada;
     }
 }
