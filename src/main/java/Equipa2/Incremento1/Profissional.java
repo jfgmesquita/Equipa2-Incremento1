@@ -1,5 +1,6 @@
 package Equipa2.Incremento1;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,9 @@ public class Profissional extends Utilizador {
     private String especialidade;
     private int experiencia; 
     private double valorHora;
-    private ArrayList<Solicitacao> servicos;
+    private List<Servico> servicos;
+    private List<Solicitacao> solicitacoes;
+
 
     /**
      * Construtor que inicializa um profissional com os dados fornecidos.
@@ -28,6 +31,7 @@ public class Profissional extends Utilizador {
         this.experiencia = experiencia;
         this.valorHora = valorHora;
         servicos = new ArrayList<>();
+        solicitacoes = new ArrayList<>();
     }
 
     /**
@@ -73,8 +77,17 @@ public class Profissional extends Utilizador {
      *
      * @return a lista de serviços
      */
-    public ArrayList<Solicitacao> getServicos() {
+    public List<Servico> getServicos() {
         return servicos;
+    }
+
+    /**
+     * Obtém a lista de serviços do profissional.
+     *
+     * @return a lista de solicitacoes
+     */
+    public List<Solicitacao> getSolicitacoes() {
+        return solicitacoes;
     }
     
     /**
