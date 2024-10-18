@@ -10,7 +10,6 @@ public class Profissional extends Utilizador {
     private int experiencia; 
     private double valorHora;
     private ArrayList<Solicitacao> servicos;
-    private ArrayList<Avaliacao> avaliacoes;
 
     /**
      * Construtor que inicializa um profissional com os dados fornecidos.
@@ -29,7 +28,6 @@ public class Profissional extends Utilizador {
         this.experiencia = experiencia;
         this.valorHora = valorHora;
         servicos = new ArrayList<>();
-        avaliacoes = new ArrayList<>();
     }
 
     /**
@@ -41,7 +39,6 @@ public class Profissional extends Utilizador {
         experiencia = 0;
         valorHora = 0;
         servicos = new ArrayList<>();
-        avaliacoes = new ArrayList<>();
     }
 
     /**
@@ -78,15 +75,6 @@ public class Profissional extends Utilizador {
      */
     public ArrayList<Solicitacao> getServicos() {
         return servicos;
-    }
-    
-    /**
-     * Obtém a lista de avaliações do profissional.
-     *
-     * @return a lista de avaliações
-     */
-    public ArrayList<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
     }
     
     /**
