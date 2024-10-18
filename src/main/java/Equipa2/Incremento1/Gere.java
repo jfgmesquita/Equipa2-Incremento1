@@ -17,36 +17,38 @@ public class Gere {
         solicitacoes = new ArrayList<>();
     }
 
-    // public void registarCliente(Cliente cliente){
-    //     clientes.add(cliente);
-    // }
+    public void registarCliente(Cliente cliente){
+        clientes.add(cliente);
+    }
 
-    // public void registarProfissional(Profissional pro){
-    //     profissionais.add(pro);
-    // }
+    public void registarProfissional(Profissional pro){
+        profissionais.add(pro);
+    }
 
-    // public Cliente pesquisarCliente(UUID id){
-    //     for(Cliente cli : clientes){
-    //         if(cli.getId().equals(id)){
-    //             return cli;
-    //         }
-    //     }
-    //     return null;
-    // }
+    public Cliente pesquisarCliente(UUID id){
+        for(Cliente cli : clientes){
+            if(cli.getId().equals(id)){
+                return cli;
+            }
+        }
+        return null;
+    }
 
-    // public Profissional pesquisarProfissional(UUID id){
-    //     for(Profissional pro : profissionais){
-    //         if(pro.getId().equals(id)){
-    //             return pro;
-    //         }
-    //     }
+    public Profissional pesquisarProfissional(UUID id){
+        for(Profissional pro : profissionais){
+            if(pro.getId().equals(id)){
+                return pro;
+            }
+        }
 
-    //     return null;
-    // }
+        return null;
+    }
 
-    // public Solicitacao ultimaSolicitacao(){
-    //     return solicitacoes.getLast();
-    // }
+    public Solicitacao ultimaSolicitacao(){
+        return solicitacoes.getLast();
+    }
+
+    //Métodos de clientes
 
     public void solicitarServico(Cliente cliente, Profissional profissional, String morada, String data){
         Solicitacao newSol = new Solicitacao();
@@ -74,9 +76,21 @@ public class Gere {
         }
     }
 
-    // public void imprimirTodasSolicitacao(){
-    //     for(Solicitacao sol : solicitacoes){
-    //         System.out.println("\n" + sol.toString() + "\n---------------------\n");
-    //     }
-    // }
+    // Métodos de profissional
+    public void adicionarServico(Profissional pro, String titulo, String descricao, String data){
+        Servico newServico = new Servico();
+        newServico.setTitulo(titulo);
+        newServico.setDescricao(descricao);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
+        newServico.setData(LocalDateTime.parse(data, dtf));
+
+        pro.getServicos().add(newServico);
+    }
+
+    public void imprimirTodasSolicitacao(){
+        for(Solicitacao sol : solicitacoes){
+            System.out.println("\n" + sol.toString() + "\n---------------------\n");
+        }
+    }
 }
