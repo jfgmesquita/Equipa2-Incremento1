@@ -15,4 +15,6 @@ public class Servico {
     private String titulo;
     private String descricao;
     private LocalDateTime data;
+    private double valorHora;
+    private Profissional profissional;
 }
