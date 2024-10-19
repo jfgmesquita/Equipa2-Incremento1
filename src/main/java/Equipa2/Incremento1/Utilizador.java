@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "Utilizador")
 public class Utilizador {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
     private String email;
@@ -44,9 +44,6 @@ public class Utilizador {
         password = "";
         morada = "";
     }
-
-    
-
     /**
      * Obtém o ID do utilizador.
      *
