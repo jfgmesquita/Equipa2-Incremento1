@@ -6,7 +6,7 @@ import java.util.UUID;
  * Classe que representa um utilizador.
  */
 public class Utilizador {
-    private String id;
+    private UUID id;
     private String nome;
     private String email;
     private String password;
@@ -22,7 +22,7 @@ public class Utilizador {
      * @param morada   Morada do utilizador.
      */
     public Utilizador(String nome, String email, String password, String morada) {
-        id = UUID.randomUUID().toString();
+        id = UUID.randomUUID();
         this.nome = nome;
         this.email = email;
         this.password = password;
@@ -34,11 +34,6 @@ public class Utilizador {
      * Inicializa os campos id, nome, email, password e morada com strings vazias.
      */
     public Utilizador(){
-        id = "";
-        nome = "";
-        email = "";
-        password = "";
-        morada = "";
     }
 
     
@@ -48,7 +43,7 @@ public class Utilizador {
      *
      * @return ID do utilizador.
      */
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 

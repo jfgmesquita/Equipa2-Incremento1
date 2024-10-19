@@ -1,5 +1,6 @@
 package Equipa2.Incremento1;
 
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -7,9 +8,11 @@ import java.util.ArrayList;
  */
 public class Profissional extends Utilizador {
     private String especialidade;
-    private int experiencia; 
-    private double valorHora;
-    private ArrayList<Solicitacao> servicos;
+    private int experiencia;
+    private MetodoPagamento metPag;
+    private List<Servico> servicos;
+    private List<Solicitacao> solicitacoes;
+
 
     /**
      * Construtor que inicializa um profissional com os dados fornecidos.
@@ -22,23 +25,19 @@ public class Profissional extends Utilizador {
      * @param experiencia a experiência do profissional em anos
      * @param valorHora o valor cobrado por hora pelo profissional
      */
-    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, double valorHora) {
+    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, MetodoPagamento metPag) {
         super(nome, email, password, morada);
         this.especialidade = especialidade;
         this.experiencia = experiencia;
-        this.valorHora = valorHora;
+        this.metPag = metPag;
         servicos = new ArrayList<>();
+        solicitacoes = new ArrayList<>();
     }
 
     /**
      * Construtor padrão que inicializa um profissional com valores padrão.
      */
     public Profissional(){
-        super();
-        especialidade = "";
-        experiencia = 0;
-        valorHora = 0;
-        servicos = new ArrayList<>();
     }
 
     /**
@@ -58,14 +57,13 @@ public class Profissional extends Utilizador {
     public int getExperiencia() {
         return experiencia;
     }
-    
+
     /**
-     * Obtém o valor cobrado por hora pelo profissional.
-     *
-     * @return o valor por hora
+     * Obtém o método de pagamento que o profissional deseja receber.
+     * @return metPag
      */
-    public double getValorHora() {
-        return valorHora;
+    public MetodoPagamento getMetPag(){
+        return metPag;
     }
     
     /**
@@ -73,8 +71,17 @@ public class Profissional extends Utilizador {
      *
      * @return a lista de serviços
      */
-    public ArrayList<Solicitacao> getServicos() {
+    public List<Servico> getServicos() {
         return servicos;
+    }
+
+    /**
+     * Obtém a lista de serviços do profissional.
+     *
+     * @return a lista de solicitacoes
+     */
+    public List<Solicitacao> getSolicitacoes() {
+        return solicitacoes;
     }
     
     /**
@@ -96,23 +103,22 @@ public class Profissional extends Utilizador {
     }
 
     /**
-     * Define o valor cobrado por hora pelo profissional.
-     *
-     * @param valorHora o novo valor por hora
+     * Define o método de pagamento que o profissional deseja receber.
+     * 
+     * @param metPag
      */
-    public void setValorHora(double valorHora) {
-        this.valorHora = valorHora;
+    public void setMetPag(MetodoPagamento metPag){
+        this.metPag = metPag;
     }
 
-    /**
-     * Retorna uma representação em string do profissional.
-     *
-     * @return uma string que representa o profissional
-     */
-    public String toString() {
-        return super.toString() + "\n" +
-            "Especialidade: " + especialidade + "\n" +
-            "Experiência: " + experiencia + " anos" + "\n" +
-            "Valor por hora: " + valorHora + "€";
-    }
+    // /**
+    //  * Retorna uma representação em string do profissional.
+    //  *
+    //  * @return uma string que representa o profissional
+    //  */
+    // public String toString() {
+    //     return super.toString() + "\n" +
+    //         "Especialidade: " + especialidade + "\n" +
+    //         "Experiência: " + experiencia + " anos";
+    // }
 }

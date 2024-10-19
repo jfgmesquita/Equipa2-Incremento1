@@ -1,10 +1,11 @@
 package Equipa2.Incremento1;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 /**
  * Classe para representar a Solitação do serviço.
@@ -12,10 +13,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Solicitacao {
+  private UUID id;
 	private StatusServico status;
 	private Cliente cliente;
 	private Profissional profissional;
-	private String endereco;
+	private String morada;
 	private LocalDateTime data;
   
   /**
@@ -23,20 +25,17 @@ public class Solicitacao {
    * 
    * @param cliente		Cliente que solicitou.
    * @param profissional  Profissional que aceitou o pedido.
-   * @param endereco		Endereço do local.
+   * @param morada		Endereço do local.
    * @param pagamento		Informações de pagamento.
    * @param data			Data e horas
    */
-  public Solicitacao(Cliente cliente, Profissional profissional, String endereco, String data) {
+  public Solicitacao(Cliente cliente, Profissional profissional, String morada, LocalDateTime data) {
+    id = UUID.randomUUID();
     this.cliente = cliente;
     this.profissional = profissional;
-    this.endereco = endereco;
+    this.morada = morada;
     status = StatusServico.PENDENTE;
-
-    //exemplo do formato da string: "15:30 28-10-2024"
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-    //transforma a string em um objeto do tipo LocalDateTime
-    this.data = LocalDateTime.parse(data, dtf);
+    this.data = data;
   }
 
   /**
@@ -44,9 +43,11 @@ public class Solicitacao {
    * Inicializa todas variáveis de objeto como null.
    */
   public Solicitacao() {
-    cliente = null;
-    profissional = null;
-    endereco = "";
-    data = null;
+  }
+
+  @Override
+  public String toString() {
+    return "Solicitacao(Id: " + id + ", status: " + status + ", morada: " + morada + ", data: " + data + ")\n"
+    + "     Cliente: " + cliente.getNome() + ", profissional: " + profissional.getNome();
   }
 }
