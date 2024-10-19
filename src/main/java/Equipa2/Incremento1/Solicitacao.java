@@ -1,11 +1,9 @@
 package Equipa2.Incremento1;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.UUID;
 
@@ -14,7 +12,6 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@ToString
 public class Solicitacao {
   private UUID id;
 	private StatusServico status;
@@ -32,17 +29,13 @@ public class Solicitacao {
    * @param pagamento		Informações de pagamento.
    * @param data			Data e horas
    */
-  public Solicitacao(Cliente cliente, Profissional profissional, String morada, String data) {
+  public Solicitacao(Cliente cliente, Profissional profissional, String morada, LocalDateTime data) {
     id = UUID.randomUUID();
     this.cliente = cliente;
     this.profissional = profissional;
     this.morada = morada;
     status = StatusServico.PENDENTE;
-
-    //exemplo do formato da string: "15:30 28-10-2024"
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-    //transforma a string em um objeto do tipo LocalDateTime
-    this.data = LocalDateTime.parse(data, dtf);
+    this.data = data;
   }
 
   /**
@@ -57,4 +50,9 @@ public class Solicitacao {
     data = null;
   }
 
+  @Override
+  public String toString() {
+    return "Solicitacao(Id: " + id + ", status: " + status + ", morada: " + morada + ", data: " + data + ")\n"
+    + "     Cliente: " + cliente.getNome() + ", profissional: " + profissional.getNome();
+  }
 }
