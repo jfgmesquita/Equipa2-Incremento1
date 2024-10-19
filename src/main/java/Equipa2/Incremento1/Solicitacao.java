@@ -43,11 +43,6 @@ public class Solicitacao {
    * Inicializa todas variáveis de objeto como null.
    */
   public Solicitacao() {
-    id = UUID.randomUUID();
-    cliente = null;
-    profissional = null;
-    morada = "";
-    data = null;
   }
 
   @Override
