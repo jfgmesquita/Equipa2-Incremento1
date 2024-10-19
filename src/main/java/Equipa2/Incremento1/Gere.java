@@ -4,12 +4,15 @@ import java.util.UUID;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Gere {
     private List<Cliente> clientes;
     private List<Profissional> profissionais;
     private List<Solicitacao> solicitacoes;
+    List<String> servicos = new ArrayList<>(){{
+        add("Limpeza");
+        add("Pintura");
+    }};
 
     public Gere(){
         clientes = new ArrayList<>();
@@ -48,15 +51,33 @@ public class Gere {
         return solicitacoes.getLast();
     }
 
+    public void consultarServicosDisponiveis(){
+        for(String serv : servicos){
+            System.out.println((servicos.indexOf(serv) + 1) + ") " + serv);
+        }
+    }
+
+    public List<Servico> consultarProfissionalPorServico(String servico){
+        List<Servico> lista = new ArrayList<>();
+        for(Profissional pro : profissionais){
+            for(Servico serv : pro.getServicos()){
+                if(serv.getTitulo().equals(servico)){
+                    lista.add(serv);
+                }
+            }
+        }
+
+        return lista;
+    }
+
     //Métodos de clientes
 
-    public void solicitarServico(Cliente cliente, Profissional profissional, String morada, String data){
+    public void solicitarServico(Cliente cliente, Profissional profissional, LocalDateTime data){
         Solicitacao newSol = new Solicitacao();
         newSol.setCliente(cliente);
         newSol.setProfissional(profissional);
-        newSol.setMorada(morada);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-        newSol.setData(LocalDateTime.parse(data, dtf));
+        newSol.setMorada(cliente.getMorada());
+        newSol.setData(data);
         newSol.setStatus(StatusServico.PENDENTE);
 
         solicitacoes.add(newSol);
@@ -77,20 +98,45 @@ public class Gere {
     }
 
     // Métodos de profissional
-    public void adicionarServico(Profissional pro, String titulo, String descricao, String data){
+    public void adicionarServico(Profissional pro, String titulo, String descricao, Double valorHora, LocalDateTime data){
         Servico newServico = new Servico();
         newServico.setTitulo(titulo);
         newServico.setDescricao(descricao);
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-        newServico.setData(LocalDateTime.parse(data, dtf));
+        newServico.setValorHora(valorHora);
+        newServico.setData(data);
 
         pro.getServicos().add(newServico);
+        newServico.setProfissional(pro);
     }
 
-    public void imprimirTodasSolicitacao(){
-        for(Solicitacao sol : solicitacoes){
-            System.out.println("\n" + sol.toString() + "\n---------------------\n");
+    public void consultarSoliticacoes(){
+        if(solicitacoes.isEmpty()){
+            System.out.println("Não existem solicitações registadas");
+        } else{
+            System.out.println("-".repeat(120));
+            for(Solicitacao sol : solicitacoes){
+                System.out.println("\n" + sol.toString() + "\n---------------------\n");
+            }
+        }
+    }
+
+    public void consultarSoliticacoes(Cliente cliente){
+        if(cliente.getSolicitacoes().isEmpty()){
+            System.out.println("Este cliente não possui solicitações");
+        } else{
+            for(Solicitacao sol : cliente.getSolicitacoes()){
+                System.out.println("\n" + sol.toString() + "\n---------------------\n");
+            }
+        }
+    }
+
+    public void consultarSoliticacoes(Profissional pro){
+        if(pro.getSolicitacoes().isEmpty()){
+            System.out.println("Este cliente não possui solicitações");
+        } else{
+            for(Solicitacao sol : pro.getSolicitacoes()){
+                System.out.println("\n" + sol.toString() + "\n---------------------\n");
+            }
         }
     }
 }
