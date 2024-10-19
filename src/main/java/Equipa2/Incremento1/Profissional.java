@@ -10,6 +10,7 @@ public class Profissional extends Utilizador {
     private String especialidade;
     private int experiencia; 
     private double valorHora;
+    private MetodoPagamento metPag;
     private List<Servico> servicos;
     private List<Solicitacao> solicitacoes;
 
@@ -25,11 +26,12 @@ public class Profissional extends Utilizador {
      * @param experiencia a experiência do profissional em anos
      * @param valorHora o valor cobrado por hora pelo profissional
      */
-    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, double valorHora) {
+    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, double valorHora, MetodoPagamento metPag) {
         super(nome, email, password, morada);
         this.especialidade = especialidade;
         this.experiencia = experiencia;
         this.valorHora = valorHora;
+        this.metPag = metPag;
         servicos = new ArrayList<>();
         solicitacoes = new ArrayList<>();
     }
@@ -70,6 +72,14 @@ public class Profissional extends Utilizador {
      */
     public double getValorHora() {
         return valorHora;
+    }
+
+    /**
+     * Obtém o método de pagamento que o profissional deseja receber.
+     * @return metPag
+     */
+    public MetodoPagamento getMetPag(){
+        return metPag;
     }
     
     /**
@@ -115,6 +125,15 @@ public class Profissional extends Utilizador {
      */
     public void setValorHora(double valorHora) {
         this.valorHora = valorHora;
+    }
+
+    /**
+     * Define o método de pagamento que o profissional deseja receber.
+     * 
+     * @param metPag
+     */
+    public void setMetPag(MetodoPagamento metPag){
+        this.metPag = metPag;
     }
 
     /**
