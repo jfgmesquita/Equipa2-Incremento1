@@ -13,9 +13,9 @@ public class MenuTeste {
 
         Gere gere = new Gere();
 
-        Cliente cliente = new Cliente("Alykhan", "alyjamal77@gmail.com", "aly", "boavista", "mbway");
-        Profissional pro = new Profissional("Divaldo", "divaldodias@gmail.com", "divas", "lousada", "Pintura", 3, MetodoPagamento.MBWAY);
-        Profissional pro2 = new Profissional("Lays", "layslimasantos@gmail.com", "linda", "studyou", "Limpeza", 1, MetodoPagamento.BOLETO_BANCARIO);
+        Cliente cliente = new Cliente("Alykhan", "alyjamal77@gmail.com", "aly", "boavista", MetodoPagamento.MBWAY);
+        Profissional pro = new Profissional("Divaldo", "divaldodias@gmail.com", "divas", "lousada", "Pintura", 3, 10, MetodoPagamento.MBWAY);
+        Profissional pro2 = new Profissional("Lays", "layslimasantos@gmail.com", "linda", "studyou", "Limpeza", 1, 15, MetodoPagamento.BOLETO_BANCARIO);
 
         // gere.registarCliente(cliente);
         gere.registarProfissional(pro);
