@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Profissional extends Utilizador {
     private String especialidade;
     private int experiencia;
+    private double valorHora;
     private MetodoPagamento metPag;
     private List<Servico> servicos;
     private List<Solicitacao> solicitacoes;
@@ -24,11 +25,13 @@ public class Profissional extends Utilizador {
      * @param especialidade a especialidade do profissional
      * @param experiencia a experiência do profissional em anos
      * @param valorHora o valor cobrado por hora pelo profissional
+     * @param metPag o método de pagamento que o profissional deseja receber
      */
-    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, MetodoPagamento metPag) {
+    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, double valorHora, MetodoPagamento metPag) {
         super(nome, email, password, morada);
         this.especialidade = especialidade;
         this.experiencia = experiencia;
+        this.valorHora = valorHora;
         this.metPag = metPag;
         servicos = new ArrayList<>();
         solicitacoes = new ArrayList<>();
@@ -56,6 +59,14 @@ public class Profissional extends Utilizador {
      */
     public int getExperiencia() {
         return experiencia;
+    }
+
+    /**
+     * Obtém o valor cobrado por hora pelo profissional.
+     * @return valorHora
+     */
+    public double getValorHora() {
+        return valorHora;
     }
 
     /**
@@ -102,6 +113,15 @@ public class Profissional extends Utilizador {
         this.experiencia = experiencia;
     }
 
+    /**
+     * Define o valor cobrado por hora pelo profissional.
+     * 
+     * @param valorHora
+     */
+    public void setValorHora(double valorHora) {
+        this.valorHora = valorHora;
+    }
+    
     /**
      * Define o método de pagamento que o profissional deseja receber.
      * 

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class Gere {
     private List<Cliente> clientes;
     private List<Profissional> profissionais;
+    private List<Admin> admins;
     private List<Solicitacao> solicitacoes;
     List<String> servicos = new ArrayList<>(){{
         add("Limpeza");
@@ -20,12 +21,28 @@ public class Gere {
         solicitacoes = new ArrayList<>();
     }
 
+    public List<Cliente> getClientes(){
+        return clientes;
+    }
+
+    public List<Profissional> getProfissionais(){
+        return profissionais;
+    }
+
+    public List<Admin> getAdmins(){
+        return admins;
+    }
+
     public void registarCliente(Cliente cliente){
         clientes.add(cliente);
     }
 
     public void registarProfissional(Profissional pro){
         profissionais.add(pro);
+    }
+
+    public void registarAdmin(Admin admin){
+        admins.add(admin);
     }
 
     public Cliente pesquisarCliente(UUID id){
@@ -41,6 +58,16 @@ public class Gere {
         for(Profissional pro : profissionais){
             if(pro.getId().equals(id)){
                 return pro;
+            }
+        }
+
+        return null;
+    }
+
+    public Admin pesquisarAdmin(UUID id){
+        for(Admin admin : admins){
+            if(admin.getId().equals(id)){
+                return admin;
             }
         }
 
