@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Gere gere = new Gere();
+        // Gere gere = new Gere();
 
         System.out.println("Bem-vindo à aplicação All Around: Pede um Serviço!");
         
@@ -75,24 +75,24 @@ public class App {
                                     morada = scanner.nextLine();
                                 } while(morada.isEmpty());
 
-                                MetodoPagamento metodoPagamentoC = null;
-                                do {
-                                    System.out.println("Escolha um método de pagamento:");
-                                    MetodoPagamento[] metodos = MetodoPagamento.values();
-                                    for (int i = 0; i < metodos.length; i++) {
-                                        System.out.println((i + 1) + " - " + metodos[i]);
-                                    }
-                                    int escolha = scanner.nextInt();
-                                    scanner.nextLine();
-                                    if (escolha > 0 && escolha <= metodos.length) {
-                                        metodoPagamentoC = metodos[escolha - 1];
-                                    } else {
-                                        System.out.println("Opção inválida.");
-                                    }
-                                } while (metodoPagamentoC == null);
+                                // MetodoPagamento metodoPagamentoC = null;
+                                // do {
+                                //     System.out.println("Escolha um método de pagamento:");
+                                //     MetodoPagamento[] metodos = MetodoPagamento.values();
+                                //     for (int i = 0; i < metodos.length; i++) {
+                                //         System.out.println((i + 1) + " - " + metodos[i]);
+                                //     }
+                                //     int escolha = scanner.nextInt();
+                                //     scanner.nextLine();
+                                //     if (escolha > 0 && escolha <= metodos.length) {
+                                //         metodoPagamentoC = metodos[escolha - 1];
+                                //     } else {
+                                //         System.out.println("Opção inválida.");
+                                //     }
+                                // } while (metodoPagamentoC == null);
 
-                                Cliente cliente = new Cliente(nome, email, password, morada, metodoPagamentoC);
-                                gere.registarCliente(cliente);
+                                // Cliente cliente = new Cliente(nome, email, password, morada, metodoPagamentoC);
+                                // gere.registarCliente(cliente);
                                 System.out.println("Cliente registado com sucesso.");
                                 break;
 
@@ -153,24 +153,24 @@ public class App {
                                     }
                                 } while(valorHora < 0);
 
-                                MetodoPagamento metodoPagamentoProf = null;
-                                do {
-                                    System.out.println("Escolha um método de pagamento:");
-                                    MetodoPagamento[] metodos = MetodoPagamento.values();
-                                    for (int i = 0; i < metodos.length; i++) {
-                                        System.out.println((i + 1) + " - " + metodos[i]);
-                                    }
-                                    int escolha = scanner.nextInt();
-                                    scanner.nextLine();
-                                    if (escolha > 0 && escolha <= metodos.length) {
-                                        metodoPagamentoProf = metodos[escolha - 1];
-                                    } else {
-                                        System.out.println("Opção inválida.");
-                                    }
-                                } while (metodoPagamentoProf == null);
+                                // MetodoPagamento metodoPagamentoProf = null;
+                                // do {
+                                //     System.out.println("Escolha um método de pagamento:");
+                                //     MetodoPagamento[] metodos = MetodoPagamento.values();
+                                //     for (int i = 0; i < metodos.length; i++) {
+                                //         System.out.println((i + 1) + " - " + metodos[i]);
+                                //     }
+                                //     int escolha = scanner.nextInt();
+                                //     scanner.nextLine();
+                                //     if (escolha > 0 && escolha <= metodos.length) {
+                                //         metodoPagamentoProf = metodos[escolha - 1];
+                                //     } else {
+                                //         System.out.println("Opção inválida.");
+                                //     }
+                                // } while (metodoPagamentoProf == null);
 
-                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, valorHora, metodoPagamentoProf);
-                                gere.registarProfissional(profissional);
+                                // Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, valorHora, metodoPagamentoProf);
+                                // gere.registarProfissional(profissional);
                                 System.out.println("Profissional registado com sucesso.");
                                 break;
 
@@ -201,81 +201,81 @@ public class App {
                                 break;
 
                             case 1:
-                                if(gere.getClientes().isEmpty()) {
-                                    System.out.println("Não existem clientes registados.");
-                                } else {
-                                    String email;
-                                    do {
-                                        System.out.println("Email:");
-                                        email = scanner.nextLine();
-                                    } while(email.isEmpty());
+                                // if(gere.getClientes().isEmpty()) {
+                                //     System.out.println("Não existem clientes registados.");
+                                // } else {
+                                //     String email;
+                                //     do {
+                                //         System.out.println("Email:");
+                                //         email = scanner.nextLine();
+                                //     } while(email.isEmpty());
 
-                                    String password;
-                                    do {
-                                        System.out.println("Password:");
-                                        password = scanner.nextLine();
-                                    } while(password.isEmpty());
+                                //     String password;
+                                //     do {
+                                //         System.out.println("Password:");
+                                //         password = scanner.nextLine();
+                                //     } while(password.isEmpty());
 
-                                    // Cliente cliente = gere.iniciarSessaoCliente(email, password);
-                                    // if(cliente != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuCliente(cliente); // Chamar menu do cliente
-                                    // } else {
-                                    //     System.out.println("Email ou password incorretos.");
-                                    // }
-                                }
+                                //     Cliente cliente = gere.iniciarSessaoCliente(email, password);
+                                //     if(cliente != null) {
+                                //         System.out.println("Sessão iniciada com sucesso.");
+                                //         gere.menuCliente(cliente); // Chamar menu do cliente
+                                //     } else {
+                                //      System.out.println("Email ou password incorretos.");
+                                //     }
+                                // }
                                 break;
 
                             case 2:
-                                if(gere.getProfissionais().isEmpty()) {
-                                    System.out.println("Não existem profissionais registados.");
-                                } else {
-                                    String emailp;
-                                    do {
-                                        System.out.println("Email:");
-                                        emailp = scanner.nextLine();
-                                    } while(emailp.isEmpty());
+                                // if(gere.getProfissionais().isEmpty()) {
+                                //     System.out.println("Não existem profissionais registados.");
+                                // } else {
+                                //     String emailp;
+                                //     do {
+                                //         System.out.println("Email:");
+                                //         emailp = scanner.nextLine();
+                                //     } while(emailp.isEmpty());
 
-                                    String passwordp;
-                                    do {
-                                        System.out.println("Password:");
-                                        passwordp = scanner.nextLine();
-                                    } while(passwordp.isEmpty());
+                                //     String passwordp;
+                                //     do {
+                                //         System.out.println("Password:");
+                                //         passwordp = scanner.nextLine();
+                                //     } while(passwordp.isEmpty());
 
-                                    // Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
-                                    // if(profissional != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuProfissional(profissional); // Chamar menu do profissional
-                                    // } else {
-                                    //     System.out.println("Email ou password incorretos.");
-                                    // }
-                                }
+                                //     Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
+                                //     if(profissional != null) {
+                                //         System.out.println("Sessão iniciada com sucesso.");
+                                //         gere.menuProfissional(profissional); // Chamar menu do profissional
+                                //     } else {
+                                //         System.out.println("Email ou password incorretos.");
+                                //     }
+                                // }
                                 break;
 
                             case 3:
-                                if(gere.getAdministradores().isEmpty()) {
-                                    System.out.println("Não existem administradores registados.");
-                                } else {
-                                    String emaila;
-                                    do {
-                                        System.out.println("Email:");
-                                        emaila = scanner.nextLine();
-                                    } while(emaila.isEmpty());
+                                // if(gere.getAdministradores().isEmpty()) {
+                                //     System.out.println("Não existem administradores registados.");
+                                // } else {
+                                //     String emaila;
+                                //     do {
+                                //         System.out.println("Email:");
+                                //         emaila = scanner.nextLine();
+                                //     } while(emaila.isEmpty());
 
-                                    String passworda;
-                                    do {
-                                        System.out.println("Password:");
-                                        passworda = scanner.nextLine();
-                                    } while(passworda.isEmpty());
+                                //     String passworda;
+                                //     do {
+                                //         System.out.println("Password:");
+                                //         passworda = scanner.nextLine();
+                                //     } while(passworda.isEmpty());
 
-                                    // Administrador administrador = gere.iniciarSessaoAdministrador(emaila, passworda);
-                                    // if(administrador != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuAdministrador(administrador); // Chamar menu do administrador
-                                    // } else {
-                                    //     System.out.println("Email ou password incorretos.");
-                                    // }
-                                }
+                                //     Administrador administrador = gere.iniciarSessaoAdministrador(emaila, passworda);
+                                //     if(administrador != null) {
+                                //         System.out.println("Sessão iniciada com sucesso.");
+                                //         gere.menuAdministrador(administrador); // Chamar menu do administrador
+                                //     } else {
+                                //         System.out.println("Email ou password incorretos.");
+                                //     }
+                                // }
                                 break;
 
                             default:
