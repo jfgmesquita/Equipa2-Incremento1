@@ -4,28 +4,33 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Cliente extends Utilizador {
-	// private ArrayList<Solicitacao> servicos; 
-	private String formaDePagamento; // eventualmente substituir por ArrayList de formas de pagamento
+	private List<Solicitacao> servicos; 
+	private MetodoPagamento formaDePagamento;
 	private List<Solicitacao> solicitacoes;
 	
-	public Cliente(String nome, String email, String password, String morada, String formaDePagamento) {
+	public Cliente(String nome, String email, String password, String morada, MetodoPagamento formaDePagamento) {
 		super(nome, email, password, morada);
 		this.formaDePagamento = formaDePagamento;
 		solicitacoes = new ArrayList<Solicitacao>();
 	}
-	 
-	 // getters
-	public String getFormaDePagamento() {
-	    return formaDePagamento;
+
+	public Cliente(){
+	}
+
+	public List<Solicitacao> getServicos(){
+		return servicos;
 	}
 
 	public List<Solicitacao> getSolicitacoes(){
 		return solicitacoes;
 	}
+
+	public MetodoPagamento getFormaDePagamento() {
+	    return formaDePagamento;
+	}
+
 	 
-	 // setters
-	public void setFormaDePagamento(String formaDePagamento) {
+	public void setFormaDePagamento(MetodoPagamento formaDePagamento) {
 	        this.formaDePagamento = formaDePagamento;
 	}
-	 
 }
