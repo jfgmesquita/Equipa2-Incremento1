@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Gere gere = new Gere();
+        Gere gere = new Gere();
 
         System.out.println("Bem-vindo à aplicação All Around: Pede um Serviço!");
         
@@ -75,13 +75,23 @@ public class App {
                                     morada = scanner.nextLine();
                                 } while(morada.isEmpty());
 
-                                String formaDePagamento;
+                                MetodoPagamento metodoPagamentoC = null;
                                 do {
-                                    System.out.println("Forma de pagamento:");
-                                    formaDePagamento = scanner.nextLine();
-                                } while(formaDePagamento.isEmpty());
+                                    System.out.println("Escolha um método de pagamento:");
+                                    MetodoPagamento[] metodos = MetodoPagamento.values();
+                                    for (int i = 0; i < metodos.length; i++) {
+                                        System.out.println((i + 1) + " - " + metodos[i]);
+                                    }
+                                    int escolha = scanner.nextInt();
+                                    scanner.nextLine();
+                                    if (escolha > 0 && escolha <= metodos.length) {
+                                        metodoPagamentoC = metodos[escolha - 1];
+                                    } else {
+                                        System.out.println("Opção inválida.");
+                                    }
+                                } while (metodoPagamentoC == null);
 
-                                Cliente cliente = new Cliente(nome, email, password, morada, formaDePagamento);
+                                Cliente cliente = new Cliente(nome, email, password, morada, metodoPagamentoC);
                                 gere.registarCliente(cliente);
                                 System.out.println("Cliente registado com sucesso.");
                                 break;
@@ -143,7 +153,23 @@ public class App {
                                     }
                                 } while(valorHora < 0);
 
-                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, valorHora);
+                                MetodoPagamento metodoPagamentoProf = null;
+                                do {
+                                    System.out.println("Escolha um método de pagamento:");
+                                    MetodoPagamento[] metodos = MetodoPagamento.values();
+                                    for (int i = 0; i < metodos.length; i++) {
+                                        System.out.println((i + 1) + " - " + metodos[i]);
+                                    }
+                                    int escolha = scanner.nextInt();
+                                    scanner.nextLine();
+                                    if (escolha > 0 && escolha <= metodos.length) {
+                                        metodoPagamentoProf = metodos[escolha - 1];
+                                    } else {
+                                        System.out.println("Opção inválida.");
+                                    }
+                                } while (metodoPagamentoProf == null);
+
+                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, valorHora, metodoPagamentoProf);
                                 gere.registarProfissional(profissional);
                                 System.out.println("Profissional registado com sucesso.");
                                 break;
@@ -183,13 +209,13 @@ public class App {
                                         System.out.println("Email:");
                                         email = scanner.nextLine();
                                     } while(email.isEmpty());
-    
+
                                     String password;
                                     do {
                                         System.out.println("Password:");
                                         password = scanner.nextLine();
                                     } while(password.isEmpty());
-    
+
                                     // Cliente cliente = gere.iniciarSessaoCliente(email, password);
                                     // if(cliente != null) {
                                     //     System.out.println("Sessão iniciada com sucesso.");
