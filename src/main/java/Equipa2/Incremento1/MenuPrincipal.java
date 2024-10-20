@@ -53,25 +53,25 @@ public class MenuPrincipal {
                             case 1:
                                 String nome;
                                 do {
-                                    System.out.println("Nome:");
+                                    System.out.print("Nome:");
                                     nome = scanner.nextLine();
                                 } while(nome.isEmpty());
 
                                 String email;
                                 do {
-                                    System.out.println("Email:");
+                                    System.out.print("Email:");
                                     email = scanner.nextLine();
                                 } while(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"));
 
                                 String password;
                                 do {
-                                    System.out.println("Password com, pelos menos, 8 caracteres, 1 letra maiúscula e 1 carácter especial:");
+                                    System.out.print("Password com, pelos menos, 8 caracteres, 1 letra maiúscula e 1 carácter especial:");
                                     password = scanner.nextLine();
                                 } while(password.length() < 8 || !password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*]).+$"));
 
                                 String morada;
                                 do {
-                                    System.out.println("Morada:");
+                                    System.out.print("Morada:");
                                     morada = scanner.nextLine();
                                 } while(morada.isEmpty());
 
@@ -99,37 +99,37 @@ public class MenuPrincipal {
                             case 2:
                                 String nomep;
                                 do {
-                                    System.out.println("Nome:");
+                                    System.out.print("Nome:");
                                     nomep = scanner.nextLine();
                                 } while(nomep.isEmpty());
 
                                 String emailp;
                                 do {
-                                    System.out.println("Email:");
+                                    System.out.print("Email:");
                                     emailp = scanner.nextLine();
                                 } while(!emailp.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"));
 
                                 String passwordp;
                                 do {
-                                    System.out.println("Password com, pelos menos, 8 caracteres, 1 letra maiúscula e 1 carácter especial:");
+                                    System.out.print("Password com, pelos menos, 8 caracteres, 1 letra maiúscula e 1 carácter especial:");
                                     passwordp = scanner.nextLine();
                                 } while(passwordp.length() < 8 || !passwordp.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*]).+$"));
 
                                 String moradap;
                                 do {
-                                    System.out.println("Morada:");
+                                    System.out.print("Morada:");
                                     moradap = scanner.nextLine();
                                 } while(moradap.isEmpty());
                                 
                                 String especialidade;
                                 do {
-                                    System.out.println("Especialidade:");
+                                    System.out.print("Especialidade:");
                                     especialidade = scanner.nextLine();
                                 } while(especialidade.isEmpty());
                                 
                                 int experiencia = -1;
                                 do {
-                                    System.out.println("Experiência em anos:");
+                                    System.out.print("Experiência em anos:");
                                     try {
                                         experiencia = scanner.nextInt();
                                         scanner.nextLine();
@@ -139,19 +139,6 @@ public class MenuPrincipal {
                                         System.out.println("Valor inválido.");
                                     }
                                 } while(experiencia < 0);
-
-                                double valorHora = -1;
-                                do {
-                                    System.out.println("Valor por hora:");
-                                    try {
-                                        valorHora = scanner.nextDouble();
-                                        scanner.nextLine();
-                                    } catch (Exception e) {
-                                        scanner.nextLine();
-                                        valorHora = -1;
-                                        System.out.println("Valor inválido.");
-                                    }
-                                } while(valorHora < 0);
 
                                 MetodoPagamento metodoPagamentoProf = null;
                                 do {
@@ -169,7 +156,7 @@ public class MenuPrincipal {
                                     }
                                 } while (metodoPagamentoProf == null);
 
-                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, valorHora, metodoPagamentoProf);
+                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, metodoPagamentoProf);
                                 gere.registarProfissional(profissional);
                                 System.out.println("Profissional registado com sucesso.");
                                 break;
@@ -217,13 +204,13 @@ public class MenuPrincipal {
                                     } while(password.isEmpty());
 
                                     // Falta criar menu de cliente e método de pesquisa iniciarSessaoCliente
-                                    // Cliente cliente = gere.iniciarSessaoCliente(email, password);
-                                    // if(cliente != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuCliente(cliente);
-                                    // } else {
-                                    //  System.out.println("Email ou password incorretos.");
-                                    // }
+                                    Cliente cliente = gere.iniciarSessaoCliente(email, password);
+                                    if(cliente != null) {
+                                        System.out.println("Sessão iniciada com sucesso.");
+                                        MenuCliente.main(cliente, gere);
+                                    } else {
+                                        System.out.println("Email ou password incorretos.");
+                                    }
                                 }
                                 break;
 
@@ -244,13 +231,14 @@ public class MenuPrincipal {
                                     } while(passwordp.isEmpty());
 
                                     // Falta criar menu de profissional e método de pesquisa iniciarSessaoProfissional
-                                    // Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
-                                    // if(profissional != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuProfissional(profissional);
-                                    // } else {
-                                    //     System.out.println("Email ou password incorretos.");
-                                    // }
+                                    Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
+                                    if(profissional != null) {
+                                        System.out.println("Sessão iniciada com sucesso.");
+                                        // gere.menuProfissional(profissional);
+                                        MenuProfissional.main(profissional, gere);
+                                    } else {
+                                        System.out.println("Email ou password incorretos.");
+                                    }
                                 }
                                 break;
 
