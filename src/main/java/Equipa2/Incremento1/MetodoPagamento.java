@@ -4,5 +4,5 @@ public enum MetodoPagamento {
     MBWAY,
     CARTAO_DE_CREDITO,
     TRANSFERENCIA_BANCARIA,
-    PAY_PAL
+    PAYPAL
 }
