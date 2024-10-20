@@ -2,7 +2,7 @@ package Equipa2.Incremento1;
 
 import java.util.Scanner;
 
-public class App {
+public class MenuPrincipal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Gere gere = new Gere();
