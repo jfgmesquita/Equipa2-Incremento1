@@ -158,8 +158,9 @@ public class App {
                 case 2:
                     int opcaoSessao = -1;
                     while(opcaoSessao != 0) {
-                        System.out.println("1 - Iniciar sessão Cliente");
-                        System.out.println("2 - Iniciar sessão Profissional");
+                        System.out.println("1 - Iniciar sessão como Cliente");
+                        System.out.println("2 - Iniciar sessão como Profissional");
+                        System.out.println("3 - Iniciar sessão como Administrador");
                         System.out.println("0 - Voltar");
                         try {
                             opcaoSessao = scanner.nextInt();
@@ -174,47 +175,81 @@ public class App {
                                 break;
 
                             case 1:
-                                String email;
-                                do {
-                                    System.out.println("Email:");
-                                    email = scanner.nextLine();
-                                } while(email.isEmpty());
-
-                                String password;
-                                do {
-                                    System.out.println("Password:");
-                                    password = scanner.nextLine();
-                                } while(password.isEmpty());
-
-                                // Cliente cliente = gere.iniciarSessaoCliente(email, password);
-                                // if(cliente != null) {
-                                //     System.out.println("Sessão iniciada com sucesso.");
-                                //     gere.menuCliente(cliente); // Chamar menu do cliente
-                                // } else {
-                                //     System.out.println("Email ou password incorretos.");
-                                // }
+                                if(gere.getClientes().isEmpty()) {
+                                    System.out.println("Não existem clientes registados.");
+                                } else {
+                                    String email;
+                                    do {
+                                        System.out.println("Email:");
+                                        email = scanner.nextLine();
+                                    } while(email.isEmpty());
+    
+                                    String password;
+                                    do {
+                                        System.out.println("Password:");
+                                        password = scanner.nextLine();
+                                    } while(password.isEmpty());
+    
+                                    // Cliente cliente = gere.iniciarSessaoCliente(email, password);
+                                    // if(cliente != null) {
+                                    //     System.out.println("Sessão iniciada com sucesso.");
+                                    //     gere.menuCliente(cliente); // Chamar menu do cliente
+                                    // } else {
+                                    //     System.out.println("Email ou password incorretos.");
+                                    // }
+                                }
                                 break;
 
                             case 2:
-                                String emailp;
-                                do {
-                                    System.out.println("Email:");
-                                    emailp = scanner.nextLine();
-                                } while(emailp.isEmpty());
+                                if(gere.getProfissionais().isEmpty()) {
+                                    System.out.println("Não existem profissionais registados.");
+                                } else {
+                                    String emailp;
+                                    do {
+                                        System.out.println("Email:");
+                                        emailp = scanner.nextLine();
+                                    } while(emailp.isEmpty());
 
-                                String passwordp;
-                                do {
-                                    System.out.println("Password:");
-                                    passwordp = scanner.nextLine();
-                                } while(passwordp.isEmpty());
+                                    String passwordp;
+                                    do {
+                                        System.out.println("Password:");
+                                        passwordp = scanner.nextLine();
+                                    } while(passwordp.isEmpty());
 
-                                // Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
-                                // if(profissional != null) {
-                                //     System.out.println("Sessão iniciada com sucesso.");
-                                //     gere.menuProfissional(profissional); // Chamar menu do profissional
-                                // } else {
-                                //     System.out.println("Email ou password incorretos.");
-                                // }
+                                    // Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
+                                    // if(profissional != null) {
+                                    //     System.out.println("Sessão iniciada com sucesso.");
+                                    //     gere.menuProfissional(profissional); // Chamar menu do profissional
+                                    // } else {
+                                    //     System.out.println("Email ou password incorretos.");
+                                    // }
+                                }
+                                break;
+
+                            case 3:
+                                if(gere.getAdministradores().isEmpty()) {
+                                    System.out.println("Não existem administradores registados.");
+                                } else {
+                                    String emaila;
+                                    do {
+                                        System.out.println("Email:");
+                                        emaila = scanner.nextLine();
+                                    } while(emaila.isEmpty());
+
+                                    String passworda;
+                                    do {
+                                        System.out.println("Password:");
+                                        passworda = scanner.nextLine();
+                                    } while(passworda.isEmpty());
+
+                                    // Administrador administrador = gere.iniciarSessaoAdministrador(emaila, passworda);
+                                    // if(administrador != null) {
+                                    //     System.out.println("Sessão iniciada com sucesso.");
+                                    //     gere.menuAdministrador(administrador); // Chamar menu do administrador
+                                    // } else {
+                                    //     System.out.println("Email ou password incorretos.");
+                                    // }
+                                }
                                 break;
 
                             default:
