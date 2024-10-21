@@ -2,7 +2,7 @@
 
 ## Scrum (Agile)
 
-#### Using Git and Trello
+#### Using MySQL, Git and Trello
 
 ***
 
