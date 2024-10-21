@@ -2,17 +2,31 @@ package Equipa2.Incremento1;
 
 import java.util.List;
 import java.util.ArrayList;
+import jakarta.persistence.*;
 
 /**
  * A classe Profissional representa um utilizador que é um profissional com especialidade, experiência e valor por hora.
  */
 public class Profissional extends Utilizador {
+
+    @Column(name = "especialidade")
     private String especialidade;
+
+    @Column(name = "experiencia")
     private int experiencia;
+
+    @Column(name = "metodo_pagamento")
+    @Enumerated(EnumType.STRING)
     private MetodoPagamento metPag;
+
+    @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
     private List<Servico> servicos;
+
+    @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
     private List<Solicitacao> solicitacoes;
 
+    @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacoes;
 
     /**
      * Construtor que inicializa um profissional com os dados fornecidos.
@@ -33,6 +47,7 @@ public class Profissional extends Utilizador {
         this.metPag = metPag;
         servicos = new ArrayList<>();
         solicitacoes = new ArrayList<>();
+        avaliacoes = new ArrayList<>();
     }
 
     /**
@@ -84,6 +99,15 @@ public class Profissional extends Utilizador {
     public List<Solicitacao> getSolicitacoes() {
         return solicitacoes;
     }
+
+    /**
+     * Obtém a lista de avaliações do profissional.
+     *
+     * @return a lista de avaliações
+     */
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
     
     /**
      * Define a especialidade do profissional.
@@ -112,14 +136,14 @@ public class Profissional extends Utilizador {
         this.metPag = metPag;
     }
 
-    // /**
-    //  * Retorna uma representação em string do profissional.
-    //  *
-    //  * @return uma string que representa o profissional
-    //  */
-    // public String toString() {
-    //     return super.toString() + "\n" +
-    //         "Especialidade: " + especialidade + "\n" +
-    //         "Experiência: " + experiencia + " anos";
-    // }
+    /**
+     * Retorna uma representação em string do profissional.
+     *
+     * @return uma string que representa o profissional
+     */
+    public String toString() {
+        return super.toString() + "\n" +
+            "Especialidade: " + especialidade + "\n" +
+            "Experiência: " + experiencia + " anos";
+    }
 }

@@ -15,7 +15,7 @@ public class MenuProfissional {
             System.out.println("--------------------");
             System.out.println("1) Adicionar serviço");
             System.out.println("2) Consultar solicitações");
-            System.out.println("0) Logout");
+            System.out.println("0) Sair");
             System.out.println("--------------------");
             option = input.nextInt();
             input.nextLine();
@@ -26,7 +26,7 @@ public class MenuProfissional {
             switch(option){
                 case 1:
                     do{
-                        System.out.println("Selecione um serviço a ser adicionado: ");
+                        System.out.println("Selecione um serviço a ser adicionado:");
                         gere.consultarServicosDisponiveis();
                         optionServico = input.nextInt();
                         input.nextLine();
@@ -34,13 +34,13 @@ public class MenuProfissional {
 
                     String descricao;
                     do{
-                        System.out.println("Descrição do serviço: ");
+                        System.out.println("Descrição do serviço:");
                         descricao = input.nextLine();
                     } while(descricao.trim().isEmpty());
 
                     Double valorHora;
                     do{
-                        System.out.println("Valor da hora: ");
+                        System.out.println("Valor da hora:");
                         valorHora = input.nextDouble();
                         input.nextLine();
                     } while(valorHora < 0);
@@ -56,7 +56,7 @@ public class MenuProfissional {
                 System.out.println("--------------------");
                 System.out.println("1) Adicionar serviço");
                 System.out.println("2) Consultar solicitações");
-                System.out.println("0) Logout");
+                System.out.println("0) Sair");
                 System.out.println("--------------------");
                 option = input.nextInt();
                 input.nextLine();
