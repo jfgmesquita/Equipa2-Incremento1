@@ -171,10 +171,12 @@ public class MenuPrincipal {
                 case 2:
                     int opcaoSessao = -1;
                     while(opcaoSessao != 0) {
+                        System.out.println("--------------------");
                         System.out.println("1 - Iniciar sessão como Cliente");
                         System.out.println("2 - Iniciar sessão como Profissional");
                         System.out.println("3 - Iniciar sessão como Administrador");
                         System.out.println("0 - Voltar");
+                        System.out.println("--------------------");
                         try {
                             opcaoSessao = scanner.nextInt();
                             scanner.nextLine();
@@ -203,7 +205,6 @@ public class MenuPrincipal {
                                         password = scanner.nextLine();
                                     } while(password.isEmpty());
 
-                                    // Falta criar menu de cliente e método de pesquisa iniciarSessaoCliente
                                     Cliente cliente = gere.iniciarSessaoCliente(email, password);
                                     if(cliente != null) {
                                         System.out.println("Sessão iniciada com sucesso.");
@@ -230,11 +231,9 @@ public class MenuPrincipal {
                                         passwordp = scanner.nextLine();
                                     } while(passwordp.isEmpty());
 
-                                    // Falta criar menu de profissional e método de pesquisa iniciarSessaoProfissional
                                     Profissional profissional = gere.iniciarSessaoProfissional(emailp, passwordp);
                                     if(profissional != null) {
                                         System.out.println("Sessão iniciada com sucesso.");
-                                        // gere.menuProfissional(profissional);
                                         MenuProfissional.main(profissional, gere);
                                     } else {
                                         System.out.println("Email ou password incorretos.");
@@ -257,12 +256,17 @@ public class MenuPrincipal {
                                         System.out.println("Password:");
                                         passworda = scanner.nextLine();
                                     } while(passworda.isEmpty());
+
+                                    String codigo;
+                                    do {
+                                        System.out.println("Código:");
+                                        codigo = scanner.nextLine();
+                                    } while(codigo.isEmpty());
                                     
-                                    // Falta criar menu de administrador e método de pesquisa iniciarSessaoAdministrador
-                                    // Administrador administrador = gere.iniciarSessaoAdministrador(emaila, passworda);
-                                    // if(administrador != null) {
+                                    // Admin admin = gere.iniciarSessaoAdmin(emaila, passworda, codigo);
+                                    // if(admin != null) {
                                     //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuAdministrador(administrador); // Chamar menu do administrador
+                                    //     gere.menuAdministrador(admin); // Falta criar menu de administrador
                                     // } else {
                                     //     System.out.println("Email ou password incorretos.");
                                     // }
