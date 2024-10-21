@@ -56,18 +56,14 @@ public class Solicitacao implements Serializable {
    * @param pagamento		Informações de pagamento.
    * @param data			Data e horas
    */
-  public Solicitacao(Cliente cliente, Profissional profissional, String endereco, Pagamento pagamento, String data) {
+  public Solicitacao(Cliente cliente, Profissional profissional, String endereco, Pagamento pagamento, LocalDateTime data) {
 	  
 	this.cliente = cliente;
     this.profissional = profissional;
     this.endereco = endereco;
     this.pagamento = pagamento;
     status = StatusServico.PENDENTE;
-
-    //exemplo do formato da string: "15:30 28-10-2024"
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-    //transforma a string em um objeto do tipo LocalDateTime
-    this.data = LocalDateTime.parse(data, dtf);
+    this.data = data;
   }
 
   /**
@@ -127,7 +123,7 @@ public LocalDateTime getData() {
 public void setData(LocalDateTime data) {
 	this.data = data;
 }
-@Id
+
 public void setId(UUID id) {
 	this.id = id;
 }

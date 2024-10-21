@@ -18,8 +18,9 @@ public class Profissional extends Utilizador {
 	@Column(name = "Experiencia")
     private int experiencia; 
 	
-	@Column(name = "Valor_hora")
-    private double valorHora;
+	@Column(name = "Metodo_Pagamento")
+	@Enumerated(EnumType.STRING)
+	private MetodoPagamento metPag;
     
     @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
     private List<Solicitacao> servicos;
@@ -38,11 +39,11 @@ public class Profissional extends Utilizador {
      * @param experiencia a experiência do profissional em anos
      * @param valorHora o valor cobrado por hora pelo profissional
      */
-    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, double valorHora) {
+    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, MetodoPagamento metPag) {
         super(nome, email, password, morada);
         this.especialidade = especialidade;
         this.experiencia = experiencia;
-        this.valorHora = valorHora;
+        this.metPag = metPag;
         servicos = new ArrayList<>();
         avaliacoes = new ArrayList<>();
     }
@@ -69,16 +70,13 @@ public class Profissional extends Utilizador {
     public int getExperiencia() {
         return experiencia;
     }
-    
     /**
-     * Obtém o valor cobrado por hora pelo profissional.
-     *
-     * @return o valor por hora
+     * Obtém o método de pagamento que o profissional deseja receber.
+     * @return metPag
      */
-    public double getValorHora() {
-        return valorHora;
+    public MetodoPagamento getMetPag() {
+    	return metPag;
     }
-    
     /**
      * Obtém a lista de serviços do profissional.
      *
@@ -115,22 +113,15 @@ public class Profissional extends Utilizador {
         this.experiencia = experiencia;
     }
 
-    /**
-     * Define o valor cobrado por hora pelo profissional.
-     *
-     * @param valorHora o novo valor por hora
-     */
-    public void setValorHora(double valorHora) {
-        this.valorHora = valorHora;
-    }
-    
-
     public void setServicos(List<Solicitacao> servicos) {
 		this.servicos = servicos;
 	}
 
 	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
+	}
+	public void setMetPag(MetodoPagamento metPag) {
+		this.metPag = metPag;
 	}
 
 	/**
@@ -141,7 +132,6 @@ public class Profissional extends Utilizador {
     public String toString() {
         return super.toString() + "\n" +
             "Especialidade: " + especialidade + "\n" +
-            "Experiência: " + experiencia + " anos" + "\n" +
-            "Valor por hora: " + valorHora + "€";
+            "Experiência: " + experiencia + " anos" + "\n";
     }
 }

@@ -15,10 +15,11 @@ import jakarta.persistence.*;
 public class Cliente extends Utilizador {
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Solicitacao> servicos;
+    private List<Solicitacao> solicitacoes;
 	
 	@Column(name = "Forma de Pagamento")
-    private String formaDePagamento;
+	@Enumerated(EnumType.STRING)
+    private MetodoPagamento formaDePagamento;
     
     /**
      * Construtor que inicializa um cliente com os dados fornecidos.
@@ -29,21 +30,17 @@ public class Cliente extends Utilizador {
      * @param morada Morada do cliente.
      * @param formaDePagamento Forma de pagamento do cliente.
      */
-    public Cliente(String nome, String email, String password, String morada, String formaDePagamento) {
+    public Cliente(String nome, String email, String password, String morada, MetodoPagamento formaDePagamento) {
         super(nome, email, password, morada);
         this.formaDePagamento = formaDePagamento;
-        this.servicos = new ArrayList<Solicitacao>();
+        this.solicitacoes = new ArrayList<Solicitacao>();
     }
     
     /**
      * Construtor padrão para a classe Cliente.
      * Inicializa os campos servicos e formaDePagamento com valores padrão.
      */
-    public Cliente() {
-        super();
-        this.formaDePagamento = "";
-        this.servicos = new ArrayList<Solicitacao>();
-    }
+    public Cliente() {}
 
     /**
      * Obtém a lista de serviços do cliente.
@@ -51,7 +48,7 @@ public class Cliente extends Utilizador {
      * @return Lista de serviços do cliente.
      */
     public List<Solicitacao> getServicos() {
-        return servicos;
+        return solicitacoes;
     }
 
     /**
@@ -59,7 +56,7 @@ public class Cliente extends Utilizador {
      *
      * @return Forma de pagamento do cliente.
      */
-    public String getFormaDePagamento() {
+    public MetodoPagamento getFormaDePagamento() {
         return formaDePagamento;
     }
 
@@ -68,14 +65,14 @@ public class Cliente extends Utilizador {
      *
      * @param formaDePagamento Forma de pagamento do cliente.
      */
-    public void setFormaDePagamento(String formaDePagamento) {
+    public void setFormaDePagamento(MetodoPagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }
     
     
 
-	public void setServicos(List<Solicitacao> servicos) {
-		this.servicos = servicos;
+	public void setServicos(List<Solicitacao> solicitacoes) {
+		this.solicitacoes = solicitacoes;
 	}
 
 	/**

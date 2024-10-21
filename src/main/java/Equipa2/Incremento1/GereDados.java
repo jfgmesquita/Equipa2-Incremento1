@@ -1,5 +1,7 @@
 package Equipa2.Incremento1;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -50,12 +52,13 @@ public class GereDados {
 	 }
 	 
 	 public static void main(String[] args) {
+		   LocalDateTime data = LocalDateTime.now();
 	       GereDados gere = new GereDados();
-	       Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", "di(valdo)nheiro");
-	       Profissional profissional = new Profissional("Devysson", "devysson@gmail.com", "senha123", "Porto", "Programação", 5, 20.5);
-	       Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", "Programação", 5, 20.6);
+	       Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", MetodoPagamento.MBWAY);
+	       Profissional profissional = new Profissional("Devysson", "devysson@gmail.com", "senha123", "Porto", "Programação", 5, MetodoPagamento.MBWAY);
+	       Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", "Programação", 5, MetodoPagamento.MBWAY);
 	       Pagamento pagamento = new Pagamento(50.5, cliente, profissional, MetodoPagamento.MBWAY);
-	       Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, "19:30 28-10-2022");
+	       Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, data);
 	       Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
 	       
 	       System.out.println(cliente.getClass());
@@ -65,7 +68,7 @@ public class GereDados {
 //	       session.beginTransaction();
 //	       Cliente alterar = session.get(Cliente.class, 2);
 //	       alterar.setNome("teste");
-	       gere.inserir(profissional);
+	       gere.inserir(profissional2);
 //	       session.getTransaction().commit();
 //	       session.close();
    	       
