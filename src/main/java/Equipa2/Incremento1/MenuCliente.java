@@ -19,7 +19,7 @@ public class MenuCliente {
             System.out.println("--------------------");
             System.out.println("1) Solicitar serviço");
             System.out.println("2) Consultar solicitações");
-            System.out.println("0) Logout");
+            System.out.println("0) Sair");
             System.out.println("--------------------");
             option = input.nextInt();
             input.nextLine();
@@ -73,7 +73,7 @@ public class MenuCliente {
                         } while (!matcher.matches());
 
                         do {
-                            System.out.print("Qual horário deseja que o serviço seja realizado (HH:mm): ");
+                            System.out.print("Em que horário deseja que o serviço seja realizado (HH:mm):");
                             stringHora = input.nextLine();
                             pattern = Pattern.compile(regexHora);
                             matcher = pattern.matcher(stringHora);
@@ -97,7 +97,7 @@ public class MenuCliente {
                 System.out.println("--------------------");
                 System.out.println("1) Solicitar serviço");
                 System.out.println("2) Consultar solicitações");
-                System.out.println("0) Logout");
+                System.out.println("0) Sair");
                 System.out.println("--------------------");
                 option = input.nextInt();
                 input.nextLine();

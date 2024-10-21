@@ -1,15 +1,30 @@
 package Equipa2.Incremento1;
 
 import java.util.UUID;
+import java.io.Serializable;
+import jakarta.persistence.*;
 
 /**
  * Classe que representa um utilizador.
  */
+@Entity
+@Table(name = "utilizador")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Utilizador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
+
     private String password;
+
+    @Column(name = "morada")
     private String morada;
 
     /**
@@ -33,10 +48,7 @@ public class Utilizador {
      * Construtor padrão para a classe Utilizador.
      * Inicializa os campos id, nome, email, password e morada com strings vazias.
      */
-    public Utilizador(){
-    }
-
-    
+    public Utilizador(){}
 
     /**
      * Obtém o ID do utilizador.
