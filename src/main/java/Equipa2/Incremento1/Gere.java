@@ -53,6 +53,16 @@ public class Gere {
         return null;
     }
 
+    public Admin iniciarSessaoAdmin(String email, String password, String codigo){
+        Admin admin = pesquisarAdmin(email, codigo);
+        if(admin != null){
+            if(admin.getPassword().equals(password)){
+                return admin;
+            }
+        }
+        return null;
+    }
+
     public void registarCliente(Cliente cliente){
         clientes.add(cliente);
     }
@@ -84,9 +94,9 @@ public class Gere {
         return null;
     }
 
-    public Admin pesquisarAdmin(UUID id){
+    public Admin pesquisarAdmin(String email, String codigo){
         for(Admin admin : admins){
-            if(admin.getId().equals(id)){
+            if(admin.getEmail().equals(email) && admin.getCodigo().equals(codigo)){
                 return admin;
             }
         }
@@ -146,6 +156,7 @@ public class Gere {
     }
 
     // Métodos de profissional
+
     public void adicionarServico(Profissional pro, String titulo, String descricao, Double valorHora, LocalDateTime data){
         Servico newServico = new Servico();
         newServico.setTitulo(titulo);
@@ -159,7 +170,7 @@ public class Gere {
 
     public void consultarSoliticacoes(){
         if(solicitacoes.isEmpty()){
-            System.out.println("Não existem solicitações registadas");
+            System.out.println("Não existem solicitações registadas.");
         } else{
             System.out.println("-".repeat(120));
             for(Solicitacao sol : solicitacoes){
@@ -170,7 +181,7 @@ public class Gere {
 
     public void consultarSoliticacoes(Cliente cliente){
         if(cliente.getSolicitacoes().isEmpty()){
-            System.out.println("Este cliente não possui solicitações");
+            System.out.println("Este cliente não possui solicitações.");
         } else{
             for(Solicitacao sol : cliente.getSolicitacoes()){
                 System.out.println("\n" + sol.toString() + "\n---------------------\n");
@@ -180,7 +191,7 @@ public class Gere {
 
     public void consultarSoliticacoes(Profissional pro){
         if(pro.getSolicitacoes().isEmpty()){
-            System.out.println("Este profissional não possui solicitações");
+            System.out.println("Este profissional não possui solicitações.");
         } else{
             for(Solicitacao sol : pro.getSolicitacoes()){
                 System.out.println("\n" + sol.toString() + "\n---------------------\n");
