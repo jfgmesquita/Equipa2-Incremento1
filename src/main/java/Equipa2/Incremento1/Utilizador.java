@@ -11,8 +11,8 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Utilizador implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String nome;
     
 	@Column(name = "Email", unique = true, nullable = false)
@@ -48,7 +48,7 @@ public class Utilizador implements Serializable {
      *
      * @return ID do utilizador.
      */
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -125,7 +125,7 @@ public class Utilizador implements Serializable {
     }
     
 
-    public void setId(int id) {
+    public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -136,7 +136,7 @@ public class Utilizador implements Serializable {
      */
     @Override
     public String toString() {
-        return "ID: " + id + "\n" + 
+        return "ID: " + id.toString() + "\n" + 
            "Nome: " + nome + "\n" + 
            "Email: " + email + "\n" + 
            "Morada: " + morada;
