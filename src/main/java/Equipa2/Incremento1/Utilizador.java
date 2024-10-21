@@ -48,9 +48,6 @@ public class Utilizador implements Serializable {
      *
      * @return ID do utilizador.
      */
-    @Id
-    @Column(name = "utilizador_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }

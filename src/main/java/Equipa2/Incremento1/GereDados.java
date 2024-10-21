@@ -53,7 +53,7 @@ public class GereDados {
 	       GereDados gere = new GereDados();
 	       Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", "di(valdo)nheiro");
 	       Profissional profissional = new Profissional("Devysson", "devysson@gmail.com", "senha123", "Porto", "Programação", 5, 20.5);
-	       Profissional profissional2 = new Profissional("Devysson", "devysson@gmail.com", "senha123", "Porto", "Programação", 5, 20.5);
+	       Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", "Programação", 5, 20.6);
 	       Pagamento pagamento = new Pagamento(50.5, cliente, profissional, MetodoPagamento.MBWAY);
 	       Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, "19:30 28-10-2022");
 	       Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
@@ -65,7 +65,7 @@ public class GereDados {
 //	       session.beginTransaction();
 //	       Cliente alterar = session.get(Cliente.class, 2);
 //	       alterar.setNome("teste");
-	       gere.inserir(avaliacao);
+	       gere.inserir(profissional);
 //	       session.getTransaction().commit();
 //	       session.close();
    	       

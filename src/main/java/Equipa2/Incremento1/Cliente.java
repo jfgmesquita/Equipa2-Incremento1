@@ -1,6 +1,7 @@
 package Equipa2.Incremento1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -14,7 +15,7 @@ import jakarta.persistence.*;
 public class Cliente extends Utilizador {
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private ArrayList<Solicitacao> servicos;
+    private List<Solicitacao> servicos;
 	
 	@Column(name = "Forma de Pagamento")
     private String formaDePagamento;
@@ -49,7 +50,7 @@ public class Cliente extends Utilizador {
      *
      * @return Lista de serviços do cliente.
      */
-    public ArrayList<Solicitacao> getServicos() {
+    public List<Solicitacao> getServicos() {
         return servicos;
     }
 
@@ -73,7 +74,7 @@ public class Cliente extends Utilizador {
     
     
 
-	public void setServicos(ArrayList<Solicitacao> servicos) {
+	public void setServicos(List<Solicitacao> servicos) {
 		this.servicos = servicos;
 	}
 
