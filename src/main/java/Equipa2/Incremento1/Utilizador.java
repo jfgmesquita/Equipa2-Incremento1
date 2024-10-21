@@ -15,7 +15,7 @@ public class Utilizador implements Serializable {
     private int id;
     private String nome;
     
-	@Column(unique = true)
+	@Column(name = "Email", unique = true, nullable = false)
     private String email;
 	
     private String password;

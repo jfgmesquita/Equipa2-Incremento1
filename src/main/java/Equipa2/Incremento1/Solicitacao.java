@@ -30,11 +30,11 @@ public class Solicitacao implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private StatusServico status;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "profissional_id")
 	private Profissional profissional;
 	

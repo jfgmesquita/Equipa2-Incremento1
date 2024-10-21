@@ -59,6 +59,13 @@ public void setData(String data) {
 public Solicitacao getServico() {
 	return servico;
 }
+
+public Profissional getProfissional() {
+	return profissional;
+}
+public void setProfissional(Profissional profissional) {
+	this.profissional = profissional;
+}
 public void setServico(Solicitacao servico) {
 	this.servico = servico;
 }
