@@ -33,6 +33,26 @@ public class Gere {
         return admins;
     }
 
+    public Cliente iniciarSessaoCliente(String email, String password){
+        Cliente cliente = pesquisarCliente(email);
+        if(cliente != null){
+            if(cliente.getPassword().equals(password)){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public Profissional iniciarSessaoProfissional(String email, String password){
+        Profissional pro = pesquisarProfissional(email);
+        if(pro != null){
+            if(pro.getPassword().equals(password)){
+                return pro;
+            }
+        }
+        return null;
+    }
+
     public void registarCliente(Cliente cliente){
         clientes.add(cliente);
     }
@@ -45,18 +65,18 @@ public class Gere {
         admins.add(admin);
     }
 
-    public Cliente pesquisarCliente(UUID id){
+    public Cliente pesquisarCliente(String email){
         for(Cliente cli : clientes){
-            if(cli.getId().equals(id)){
+            if(cli.getEmail().equals(email)){
                 return cli;
             }
         }
         return null;
     }
 
-    public Profissional pesquisarProfissional(UUID id){
+    public Profissional pesquisarProfissional(String email){
         for(Profissional pro : profissionais){
-            if(pro.getId().equals(id)){
+            if(pro.getEmail().equals(email)){
                 return pro;
             }
         }
@@ -101,6 +121,7 @@ public class Gere {
 
     public void solicitarServico(Cliente cliente, Profissional profissional, LocalDateTime data){
         Solicitacao newSol = new Solicitacao();
+        newSol.setId(UUID.randomUUID());
         newSol.setCliente(cliente);
         newSol.setProfissional(profissional);
         newSol.setMorada(cliente.getMorada());
@@ -159,7 +180,7 @@ public class Gere {
 
     public void consultarSoliticacoes(Profissional pro){
         if(pro.getSolicitacoes().isEmpty()){
-            System.out.println("Este cliente não possui solicitações");
+            System.out.println("Este profissional não possui solicitações");
         } else{
             for(Solicitacao sol : pro.getSolicitacoes()){
                 System.out.println("\n" + sol.toString() + "\n---------------------\n");
