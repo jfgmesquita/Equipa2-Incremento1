@@ -7,46 +7,65 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 
+
 public class GereDados {
 
 	protected SessionFactory sessionFactory;
 	public void setup() {
 	 // code to load Hibernate Session factory
-		
 		 final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 				 .configure() // configures settings from hibernate.cfg.xml
 				 .build();
 			 try {
 			 sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-			 } catch (Exception ex) {
-				 System.out.println("removido: " + ex.toString());
+			 } 
+			 catch (Exception ex) {
+			 System.out.println("erro: " + ex.toString());
 			 StandardServiceRegistryBuilder.destroy(registry);
-		}
-				 Session session = sessionFactory.openSession();
-				 session.beginTransaction();
+			 }
+				 //session.persist(new Solicitacao(new Cliente("Thiago", "thiago@gmail", "teste", "rio tinto", "dinheiro"), new Profissional("luh", "luh@gmail", "teste2", "Gondomar", "arte", 2, 30), "em casa", new Pagamento(), "15:30 28-10-2024"));
+				
 	 }
-	 protected void exit() {
-	 // code to close Hibernate Session factory
-		 sessionFactory.close();
+	
+	 protected void inserir(Object objeto) {
+		 setup();
+		 Session session = sessionFactory.openSession();
+		 session.beginTransaction();
+		 session.persist(objeto);
+		 session.getTransaction().commit();
+		 session.close();
 	 }
-	 protected void create() {
-	 // code to save a book
+	 protected void alterarNomeUtilizador(int id, String novoNome) {
+		 setup();
+		 Session session = sessionFactory.openSession();
+		 session.beginTransaction();
+		 Utilizador utilizador = session.get(Utilizador.class, id);
+		 utilizador.setNome(novoNome);
+		 session.getTransaction().commit();
+		 session.close();
 	 }
-	 protected void read() {
-	 // code to get a book
+	 protected void deletar() {
+		 
+		 
 	 }
-	 protected void update() {
-	 // code to modify a book
-	 }
-	 protected void delete() {
-	 // code to remove a book
-	 }
+	 
 	 public static void main(String[] args) {
-	 // code to run the program
-		 GereDados manager = new GereDados();
-		 manager.setup();
-		 
-		 manager.exit();
-		 
-	 }
-	}
+	       GereDados gere = new GereDados();
+	       Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", "di(valdo)nheiro");
+	       Profissional profissional = new Profissional("Devysson", "devysson@gmail.com", "senha123", "Porto", "Programação", 5, 20.5);
+	       Pagamento pagamento = new Pagamento(50.5, cliente, profissional, MetodoPagamento.MBWAY);
+	       Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, "19:30 28-10-2022");
+	       Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
+	       
+	       System.out.println(cliente.getClass());
+//	       gere.alterarNomeUtilizador(2, "leandro");
+//	       gere.setup();
+//	       Session session = gere.sessionFactory.openSession();
+//	       session.beginTransaction();
+//	       Cliente alterar = session.get(Cliente.class, 2);
+//	       alterar.setNome("teste");
+	       gere.inserir(avaliacao);
+//	       session.getTransaction().commit();
+//	       session.close();
+	    }
+}

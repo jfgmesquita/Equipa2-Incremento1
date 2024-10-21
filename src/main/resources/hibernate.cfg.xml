@@ -8,16 +8,24 @@
  	<!-- Set the Driver Class -->
  	<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
  	<!-- Set URL -->
- 	<property name="connection.url">jdbc:mysql://localhost:3306</property>
+ 	<property name="connection.url">jdbc:mysql://localhost:3306/solicitacao</property>
  	<!-- Set the user name -->
  	<property name="connection.username">root</property>
  	<!-- Set the password -->
  	<property name="connection.password">wg6lz9zuvp</property>
 	 <!-- Echo all executed SQL to stdout -->
  	<property name="show_sql">true</property>
+ 	<property name="hibernate.hbm2ddl.auto">update</property>
+ 	
+ 	
  	<!-- Set the annotated classes (inform the complete namespace) -->
+ 	<mapping class="Equipa2.Incremento1.Utilizador"/>
  	<mapping class="Equipa2.Incremento1.Solicitacao" />
- 	<mapping class="Equipa2.Incremento1.Cliente" />
-
+ 	<mapping class="Equipa2.Incremento1.Avaliacao"/>
+ 	<mapping class="Equipa2.Incremento1.Pagamento"/>
+ 	<mapping class="Equipa2.Incremento1.Cliente"/>
+	<mapping class="Equipa2.Incremento1.Profissional"/>
+	
+	
  </session-factory>
 </hibernate-configuration>

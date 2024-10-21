@@ -2,8 +2,12 @@ package Equipa2.Incremento1;
 
 import java.util.UUID;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,25 +20,30 @@ import lombok.Setter;
 //@Getter
 //@Setter
 @Entity
-@Table(name = "Solicitação de Serviço")
-public class Solicitacao {
+@Table(name = "Solicitação_de_Serviço")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Solicitacao implements Serializable {
 	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
+	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "Status", nullable = false)
 	private StatusServico status;
-	@ManyToOne
-	@Column(name = "Cliente", nullable = false)
+	
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	@ManyToOne
-	@Column(name = "Profissional", nullable = false)
+	
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "profissional_id")
 	private Profissional profissional;
-	@Column(name = "Endereço", nullable = false)
+	
+	@Column(name = "Endereço")
 	private String endereco;
-	@OneToOne
-	@Column(name = "Pagamento", nullable = false)
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Pagamento pagamento;
-	@Column(name = "Data", nullable = false)
+	
 	private LocalDateTime data;
   
   /**
@@ -48,7 +57,7 @@ public class Solicitacao {
    * @param data			Data e horas
    */
   public Solicitacao(Cliente cliente, Profissional profissional, String endereco, Pagamento pagamento, String data) {
-	id = UUID.randomUUID();
+	  
 	this.cliente = cliente;
     this.profissional = profissional;
     this.endereco = endereco;
@@ -67,9 +76,6 @@ public class Solicitacao {
   public Solicitacao() {
   }
   
-  @Id
-  @Column(name = "solicitacao_id")
-  @GeneratedValue(strategy = GenerationType.UUID)
   public UUID getId() {
 	  return id;
   }

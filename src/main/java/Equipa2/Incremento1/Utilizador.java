@@ -1,5 +1,6 @@
 package Equipa2.Incremento1;
 
+import java.io.Serializable;
 import java.util.UUID;
 import jakarta.persistence.*;
 /**
@@ -7,12 +8,16 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "Utilizador")
-public class Utilizador {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Utilizador implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nome;
+    
+	@Column(unique = true)
     private String email;
+	
     private String password;
     private String morada;
 
@@ -26,7 +31,7 @@ public class Utilizador {
      * @param morada   Morada do utilizador.
      */
     public Utilizador(String nome, String email, String password, String morada) {
-        id = UUID.randomUUID();
+     
         this.nome = nome;
         this.email = email;
         this.password = password;
@@ -37,13 +42,7 @@ public class Utilizador {
      * Construtor padrão para a classe Utilizador.
      * Inicializa os campos id, nome, email, password e morada com strings vazias.
      */
-    public Utilizador(){
-        id = null;
-        nome = "";
-        email = "";
-        password = "";
-        morada = "";
-    }
+    public Utilizador(){}
     /**
      * Obtém o ID do utilizador.
      *
@@ -51,8 +50,8 @@ public class Utilizador {
      */
     @Id
     @Column(name = "utilizador_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
-    public UUID getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() {
         return id;
     }
 
@@ -127,15 +126,20 @@ public class Utilizador {
     public void setMorada(String morada) {
         this.morada = morada;
     }
+    
 
-    /**
+    public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
      * Retorna uma representação em string do utilizador.
      *
      * @return String que representa o utilizador.
      */
     @Override
     public String toString() {
-        return "ID: " + id.toString() + "\n" + 
+        return "ID: " + id + "\n" + 
            "Nome: " + nome + "\n" + 
            "Email: " + email + "\n" + 
            "Morada: " + morada;

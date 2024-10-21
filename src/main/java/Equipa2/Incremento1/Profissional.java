@@ -1,16 +1,31 @@
 package Equipa2.Incremento1;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.*;
+
 
 /**
  * A classe Profissional representa um utilizador que é um profissional com especialidade, experiência e valor por hora.
  */
+@Entity
+@Table(name = "Profissional")
 public class Profissional extends Utilizador {
+	@Column(name = "Especialidade")
     private String especialidade;
+	
+	@Column(name = "Experiencia")
     private int experiencia; 
+	
+	@Column(name = "Valor_hora")
     private double valorHora;
-    private ArrayList<Solicitacao> servicos;
-    private ArrayList<Avaliacao> avaliacoes;
+    
+    @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
+    private List<Solicitacao> servicos;
+    
+    @OneToMany(mappedBy = "profissional", cascade = CascadeType.ALL)
+    private List<Avaliacao> avaliacoes;
 
     /**
      * Construtor que inicializa um profissional com os dados fornecidos.
@@ -35,14 +50,7 @@ public class Profissional extends Utilizador {
     /**
      * Construtor padrão que inicializa um profissional com valores padrão.
      */
-    public Profissional(){
-        super();
-        especialidade = "";
-        experiencia = 0;
-        valorHora = 0;
-        servicos = new ArrayList<>();
-        avaliacoes = new ArrayList<>();
-    }
+    public Profissional() {}
 
     /**
      * Obtém a especialidade do profissional.
@@ -76,7 +84,7 @@ public class Profissional extends Utilizador {
      *
      * @return a lista de serviços
      */
-    public ArrayList<Solicitacao> getServicos() {
+    public List<Solicitacao> getServicos() {
         return servicos;
     }
     
@@ -85,7 +93,7 @@ public class Profissional extends Utilizador {
      *
      * @return a lista de avaliações
      */
-    public ArrayList<Avaliacao> getAvaliacoes() {
+    public List<Avaliacao> getAvaliacoes() {
         return avaliacoes;
     }
     
@@ -115,8 +123,17 @@ public class Profissional extends Utilizador {
     public void setValorHora(double valorHora) {
         this.valorHora = valorHora;
     }
+    
 
-    /**
+    public void setServicos(List<Solicitacao> servicos) {
+		this.servicos = servicos;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+
+	/**
      * Retorna uma representação em string do profissional.
      *
      * @return uma string que representa o profissional

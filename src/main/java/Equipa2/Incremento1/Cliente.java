@@ -8,10 +8,15 @@ import jakarta.persistence.*;
  * A classe Cliente representa um cliente que herda da classe Utilizador.
  * Contém informações sobre os serviços solicitados e a forma de pagamento.
  */
+
 @Entity
+@Table(name = "Cliente")
 public class Cliente extends Utilizador {
-	@OneToMany
-    private ArrayList<Solicitacao> servicos; 
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private ArrayList<Solicitacao> servicos;
+	
+	@Column(name = "Forma de Pagamento")
     private String formaDePagamento;
     
     /**
@@ -26,7 +31,7 @@ public class Cliente extends Utilizador {
     public Cliente(String nome, String email, String password, String morada, String formaDePagamento) {
         super(nome, email, password, morada);
         this.formaDePagamento = formaDePagamento;
-        servicos = new ArrayList<Solicitacao>();
+        this.servicos = new ArrayList<Solicitacao>();
     }
     
     /**
@@ -65,6 +70,12 @@ public class Cliente extends Utilizador {
     public void setFormaDePagamento(String formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }
+    
+    
+
+	public void setServicos(ArrayList<Solicitacao> servicos) {
+		this.servicos = servicos;
+	}
 
 	/**
      * Retorna uma representação em string do cliente.
