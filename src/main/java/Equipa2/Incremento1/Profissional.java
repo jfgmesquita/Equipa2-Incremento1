@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 /**
  * A classe Profissional representa um utilizador que é um profissional com especialidade, experiência e valor por hora.
  */
+@Entity
 public class Profissional extends Utilizador {
 
     @Column(name = "especialidade")

@@ -37,7 +37,7 @@ public class Utilizador {
      * @param morada   Morada do utilizador.
      */
     public Utilizador(String nome, String email, String password, String morada) {
-        id = UUID.randomUUID();
+       
         this.nome = nome;
         this.email = email;
         this.password = password;
