@@ -130,6 +130,14 @@ public class Utilizador {
     public void setMorada(String morada) {
         this.morada = morada;
     }
+    /**
+     * Define o Id do utilizador.
+     *
+     * @param id novo Id do utilizador.
+     */
+    public void setId(UUID id){
+        this.id = id;
+    }
 
     /**
      * Retorna uma representação em string do utilizador.

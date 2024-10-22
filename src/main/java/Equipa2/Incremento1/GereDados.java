@@ -1,5 +1,5 @@
 package Equipa2.Incremento1;
-
+import java.util.UUID;
 import java.time.LocalDateTime;
 
 import org.hibernate.Session;
@@ -11,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class GereDados {
 
 	protected SessionFactory sessionFactory;
+
 	public void setup() {
 	    // code to load Hibernate Session factory
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -22,29 +23,57 @@ public class GereDados {
             System.out.println("erro: " + ex.toString());
             StandardServiceRegistryBuilder.destroy(registry);
         }
-        //session.persist(new Solicitacao(new Cliente("Thiago", "thiago@gmail", "teste", "rio tinto", "dinheiro"), new Profissional("luh", "luh@gmail", "teste2", "Gondomar", "arte", 2, 30), "em casa", new Pagamento(), "15:30 28-10-2024"));	
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 	}
 	
 	protected void inserir(Object objeto) {
 		setup();
 	    Session session = sessionFactory.openSession();
 		session.beginTransaction();
+
 	    session.persist(objeto);
+
 		session.getTransaction().commit();
 		session.close();
 	}
 
-	protected void alterarNomeUtilizador(int id, String novoNome) {
+	protected void alterarNomeUtilizador(Utilizador utilizador, String novoNome) {
 		setup();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Utilizador utilizador = session.get(Utilizador.class, id);
-		utilizador.setNome(novoNome);
+
+		Utilizador utilizadorDB = session.get(Utilizador.class, utilizador.getId());
+		utilizadorDB.setNome(novoNome);
+
 		session.getTransaction().commit();
 		session.close();
 	}
 
-	protected void deletar() {}
+	protected Utilizador lerUtilizador(String email){
+		setup();
+		Session session = sessionFactory.openSession();
+
+		Utilizador utilizador = session.createQuery("from Utilizador u where u.email = :email", Utilizador.class)
+					.setParameter("email", email)
+					.getSingleResult();
+
+		session.close();
+		return utilizador;
+
+	}
+	
+	protected void deletar(Object object) {
+		setup();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		
+		session.delete(object);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
 	 
 	public static void main(String[] args) {
 		LocalDateTime data = LocalDateTime.now();
@@ -56,15 +85,15 @@ public class GereDados {
 	    Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, data);
 	    Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
 	       
-	    System.out.println(cliente.getClass());
-   	    //gere.alterarNomeUtilizador(2, "divaldinho junior");
-	    //gere.setup();
-	    //Session session = gere.sessionFactory.openSession();
-	    //session.beginTransaction();
-	    //Cliente alterar = session.get(Cliente.class, 2);
-	    //alterar.setNome("teste");
-	    gere.inserir(profissional2);
-	    //session.getTransaction().commit();
-	    //session.close();  
+	
+		//Create
+	    //gere.inserir(cliente);
+		//Read
+		Utilizador divaldo = gere.lerUtilizador("DIVALD@gmail.com");
+		//Update
+		//gere.alterarNomeUtilizador(divaldo, "divaldinho");
+		//Delete
+		gere.deletar(divaldo);
+
 	}
 }
