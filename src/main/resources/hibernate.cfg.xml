@@ -19,13 +19,14 @@
  	
  	
  	<!-- Set the annotated classes (inform the complete namespace) -->
+	
  	<mapping class="Equipa2.Incremento1.Utilizador"/>
  	<mapping class="Equipa2.Incremento1.Solicitacao" />
  	<mapping class="Equipa2.Incremento1.Avaliacao"/>
  	<mapping class="Equipa2.Incremento1.Pagamento"/>
  	<mapping class="Equipa2.Incremento1.Cliente"/>
 	<mapping class="Equipa2.Incremento1.Profissional"/>
-	
+	<mapping class="Equipa2.Incremento1.Servico"/>
 	
  </session-factory>
 </hibernate-configuration>
