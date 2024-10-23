@@ -136,6 +136,10 @@ public class Gere {
         }
     }
 
+    public void removerCliente(Cliente cliente){
+        clientes.remove(cliente);
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
