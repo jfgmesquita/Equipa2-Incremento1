@@ -54,7 +54,7 @@ public class GereDados {
 	    Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", "Programação", 5, MetodoPagamento.MBWAY);
 	    Pagamento pagamento = new Pagamento(50.5, cliente, profissional, MetodoPagamento.MBWAY);
 	    Solicitacao solicitacao = new Solicitacao(cliente, profissional, "Universidade Do Porto", pagamento, data);
-	    Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
+	    new Avaliacao(5, "Otimo serviço!", solicitacao);
 	       
 	    System.out.println(cliente.getClass());
    	    //gere.alterarNomeUtilizador(2, "divaldinho junior");
