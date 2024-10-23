@@ -172,6 +172,18 @@ public class Gere {
         admins.remove(admin);
     }
 
+    public void consultarSolicitacoes(){
+        if(solicitacoes.isEmpty()){
+            System.out.println("Não existem solicitações registadas.");
+        } else{
+            for(Solicitacao sol : solicitacoes){
+                System.out.println("-".repeat(20));
+                System.out.println(sol.toString());
+                System.out.println("-".repeat(20));
+            }
+        }
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
