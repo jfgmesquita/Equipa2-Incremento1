@@ -11,12 +11,12 @@ public class MenuPrincipal {
         
         int opcao = -1;
         while(opcao != 0) {
-            System.out.println("--------------------");
+            System.out.println("-".repeat(20));
             System.out.println("Escolha uma opção:");
             System.out.println("1 - Registar");
             System.out.println("2 - Iniciar sessão");
             System.out.println("0 - Sair");
-            System.out.println("--------------------");
+            System.out.println("-".repeat(20));
             try {
                 opcao = scanner.nextInt();
                 scanner.nextLine();
@@ -32,12 +32,12 @@ public class MenuPrincipal {
                 case 1:
                     int opcaoRegisto = -1;
                     while(opcaoRegisto != 0) {
-                        System.out.println("--------------------");
+                        System.out.println("-".repeat(20));
                         System.out.println("Escolha o tipo de registo:");
                         System.out.println("1 - Registar Cliente");
                         System.out.println("2 - Registar Profissional");
                         System.out.println("0 - Voltar");
-                        System.out.println("--------------------");
+                        System.out.println("-".repeat(20));
                         try {
                             opcaoRegisto = scanner.nextInt();
                             scanner.nextLine();
@@ -171,12 +171,12 @@ public class MenuPrincipal {
                 case 2:
                     int opcaoSessao = -1;
                     while(opcaoSessao != 0) {
-                        System.out.println("--------------------");
+                        System.out.println("-".repeat(20));
                         System.out.println("1 - Iniciar sessão como Cliente");
                         System.out.println("2 - Iniciar sessão como Profissional");
                         System.out.println("3 - Iniciar sessão como Administrador");
                         System.out.println("0 - Voltar");
-                        System.out.println("--------------------");
+                        System.out.println("-".repeat(20));
                         try {
                             opcaoSessao = scanner.nextInt();
                             scanner.nextLine();
@@ -263,13 +263,13 @@ public class MenuPrincipal {
                                         codigo = scanner.nextLine();
                                     } while(codigo.isEmpty());
                                     
-                                    // Admin admin = gere.iniciarSessaoAdmin(emaila, passworda, codigo);
-                                    // if(admin != null) {
-                                    //     System.out.println("Sessão iniciada com sucesso.");
-                                    //     gere.menuAdministrador(admin); // Falta criar menu de administrador
-                                    // } else {
-                                    //     System.out.println("Email ou password incorretos.");
-                                    // }
+                                    Admin admin = gere.iniciarSessaoAdmin(emaila, passworda);
+                                    if(admin != null) {
+                                        System.out.println("Sessão iniciada com sucesso.");
+                                        MenuAdmin.main(admin, gere);
+                                    } else {
+                                        System.out.println("Email ou password incorretos.");
+                                    }
                                 }
                                 break;
 
