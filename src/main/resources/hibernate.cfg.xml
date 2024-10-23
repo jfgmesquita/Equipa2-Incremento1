@@ -21,6 +21,7 @@
  	<!-- Set the annotated classes (inform the complete namespace) -->
 	
  	<mapping class="Equipa2.Incremento1.Utilizador"/>
+	<mapping class="Equipa2.Incremento1.Admin"/>
  	<mapping class="Equipa2.Incremento1.Solicitacao" />
  	<mapping class="Equipa2.Incremento1.Avaliacao"/>
  	<mapping class="Equipa2.Incremento1.Pagamento"/>

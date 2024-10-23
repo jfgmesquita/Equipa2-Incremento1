@@ -16,7 +16,6 @@ public class Utilizador {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "nome")
     private String nome;
 
     @Column(name = "email", unique = true, nullable = false)
@@ -24,7 +23,6 @@ public class Utilizador {
 
     private String password;
 
-    @Column(name = "morada")
     private String morada;
 
     /**
