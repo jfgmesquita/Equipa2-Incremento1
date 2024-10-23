@@ -19,11 +19,12 @@ public class MenuCliente {
             System.out.println("--------------------");
             System.out.println("1) Solicitar serviço");
             System.out.println("2) Consultar solicitações");
+            System.out.println("3) Consultar serviços disponíveis");
             System.out.println("0) Sair");
             System.out.println("--------------------");
             option = input.nextInt();
             input.nextLine();
-        } while (option < 0 || option > 2);
+        } while (option < 0 || option > 3);
 
         while (option != 0) {
 
@@ -35,7 +36,7 @@ public class MenuCliente {
                         gere.consultarServicosDisponiveis();
                         optionServico = input.nextInt();
                         input.nextLine();
-                    } while (option < 1 || option > gere.servicos.size());
+                    } while (optionServico < 1 || optionServico > gere.servicos.size());
 
                     servicoFiltro = gere.servicos.get(optionServico - 1);
 
@@ -91,17 +92,39 @@ public class MenuCliente {
                 case 2:
                     gere.consultarSoliticacoes(cliente);
                     break;
+                case 3:
+                    do {
+                        System.out.println("Escolha o tipo de serviço que deseja:");
+                        gere.consultarServicosDisponiveis();
+                        optionServico = input.nextInt();
+                        input.nextLine();
+                    } while (optionServico < 1 || optionServico > gere.servicos.size());
+
+                    servicoFiltro = gere.servicos.get(optionServico - 1);
+
+                    listaFiltrada = gere.consultarProfissionalPorServico(servicoFiltro);
+
+                    if (listaFiltrada.isEmpty()) {
+                        System.out.println("Não existem profissionais que façam esse tipo de serviço.");
+                    } else {
+                        for (Servico serv : listaFiltrada) {
+                            System.out.println((listaFiltrada.indexOf(serv) + 1) + ") "
+                                    + serv.getProfissional().getNome() + " - " + serv.getTitulo() + "("
+                                    + serv.getDescricao() + ") - " + serv.getValorHora() + " Euros");
+                        }
+                    }
             }
 
             do {
                 System.out.println("--------------------");
                 System.out.println("1) Solicitar serviço");
                 System.out.println("2) Consultar solicitações");
+                System.out.println("3) Consultar serviços disponíveis");
                 System.out.println("0) Sair");
                 System.out.println("--------------------");
                 option = input.nextInt();
                 input.nextLine();
-            } while (option < 0 || option > 2);
+            } while (option < 0 || option > 3);
         }
     }
 }
