@@ -135,11 +135,11 @@ public class Gere {
             }
         }
     }
-
+    
     public void removerCliente(Cliente cliente){
         clientes.remove(cliente);
     }
-
+    
     public void consultarProfissionais(){
         if(profissionais.isEmpty()){
             System.out.println("Não existem profissionais registados.");
@@ -150,6 +150,10 @@ public class Gere {
                 System.out.println("-".repeat(20));
             }
         }
+    }
+    
+    public void removerProfissional(Profissional pro){
+        profissionais.remove(pro);
     }
 
     public List<Servico> consultarProfissionalPorServico(String servico){
