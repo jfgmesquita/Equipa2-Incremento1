@@ -104,6 +104,16 @@ public class Gere {
         return null;
     }
 
+    public Admin pesquisaAdminApenasEmail(String email){
+        for(Admin admin : admins){
+            if(admin.getEmail().equals(email)){
+                return admin;
+            }
+        }
+
+        return null;
+    }
+
     public Solicitacao ultimaSolicitacao(){
         return solicitacoes.getLast();
     }
