@@ -41,8 +41,8 @@ public class Profissional extends Utilizador {
      * @param valorHora o valor cobrado por hora pelo profissional
      * @param metPag o método de pagamento que o profissional deseja receber
      */
-    public Profissional(String nome, String email, String password, String morada, String especialidade, int experiencia, MetodoPagamento metPag) {
-        super(nome, email, password, morada);
+    public Profissional(String nome, String email, String password, String morada, UserType userType, String especialidade, int experiencia, MetodoPagamento metPag) {
+        super(nome, email, password, morada, userType);
         this.especialidade = especialidade;
         this.experiencia = experiencia;
         this.metPag = metPag;

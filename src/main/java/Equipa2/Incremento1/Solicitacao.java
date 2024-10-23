@@ -1,12 +1,8 @@
 package Equipa2.Incremento1;
 
 import java.util.UUID;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,12 +48,11 @@ public class Solicitacao {
      * @param morada		Endereço do local.
      * @param data			Data e horas.
      */
-    public Solicitacao(Cliente cliente, Profissional profissional, String morada, Pagamento pagamento, LocalDateTime data) {
+    public Solicitacao(Cliente cliente, Profissional profissional, LocalDateTime data) {
         id = UUID.randomUUID();
         this.cliente = cliente;
         this.profissional = profissional;
-        this.morada = morada;
-		this.pagamento = pagamento;
+        this.morada = cliente.getMorada();
         status = StatusServico.PENDENTE;
         this.data = data;
     }

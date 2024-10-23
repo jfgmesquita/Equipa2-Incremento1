@@ -91,7 +91,7 @@ public class MenuPrincipal {
                                     }
                                 } while (metodoPagamentoC == null);
 
-                                Cliente cliente = new Cliente(nome, email, password, morada, metodoPagamentoC);
+                                Cliente cliente = new Cliente(nome, email, password, morada, UserType.CLIENTE, metodoPagamentoC);
                                 gere.registarCliente(cliente);
                                 System.out.println("Cliente registado com sucesso.");
                                 break;
@@ -156,7 +156,7 @@ public class MenuPrincipal {
                                     }
                                 } while (metodoPagamentoProf == null);
 
-                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, especialidade, experiencia, metodoPagamentoProf);
+                                Profissional profissional = new Profissional(nomep, emailp, passwordp, moradap, UserType.PROFISSIONAL, especialidade, experiencia, metodoPagamentoProf);
                                 gere.registarProfissional(profissional);
                                 System.out.println("Profissional registado com sucesso.");
                                 break;
