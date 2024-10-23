@@ -140,6 +140,18 @@ public class Gere {
         clientes.remove(cliente);
     }
 
+    public void consultarProfissionais(){
+        if(profissionais.isEmpty()){
+            System.out.println("Não existem profissionais registados.");
+        } else{
+            for(Profissional pro : profissionais){
+                System.out.println("-".repeat(20));
+                System.out.println(pro.toString());
+                System.out.println("-".repeat(20));
+            }
+        }
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
