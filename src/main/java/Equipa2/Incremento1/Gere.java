@@ -156,6 +156,18 @@ public class Gere {
         profissionais.remove(pro);
     }
 
+    public void consultarAdmins(){
+        if(admins.isEmpty()){
+            System.out.println("Não existem admins registados.");
+        } else{
+            for(Admin admin : admins){
+                System.out.println("-".repeat(20));
+                System.out.println(admin.toString());
+                System.out.println("-".repeat(20));
+            }
+        }
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
