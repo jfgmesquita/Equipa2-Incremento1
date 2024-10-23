@@ -124,6 +124,18 @@ public class Gere {
         }
     }
 
+    public void consultarClientes(){
+        if(clientes.isEmpty()){
+            System.out.println("Não existem clientes registados.");
+        } else{
+            for(Cliente cli : clientes){
+                System.out.println("-".repeat(20));
+                System.out.println(cli.toString());
+                System.out.println("-".repeat(20));
+            }
+        }
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
