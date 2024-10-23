@@ -168,6 +168,10 @@ public class Gere {
         }
     }
 
+    public void removerAdmin(Admin admin){
+        admins.remove(admin);
+    }
+
     public List<Servico> consultarProfissionalPorServico(String servico){
         List<Servico> lista = new ArrayList<>();
         for(Profissional pro : profissionais){
