@@ -1,8 +1,11 @@
 package Equipa2.Incremento1;
 
+import jakarta.persistence.*;
+
 /**
  * Classe que representa um administrador.
  */
+@Entity
 public class Admin extends Utilizador {
     private String codigo;
 

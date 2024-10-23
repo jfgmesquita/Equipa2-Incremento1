@@ -8,6 +8,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GereDados {
 
 	protected SessionFactory sessionFactory;
@@ -38,6 +41,19 @@ public class GereDados {
 		session.close();
 	}
 
+	protected void inserirServico(Profissional profissional, Servico servico) {
+		setup();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Profissional profissionalDB = session.get(Profissional.class, profissional.getId());
+		servico.setProfissional(profissionalDB);
+		session.persist(servico);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
 	protected void alterarNomeUtilizador(Utilizador utilizador, String novoNome) {
 		setup();
 		Session session = sessionFactory.openSession();
@@ -48,6 +64,44 @@ public class GereDados {
 
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	protected void alterarSenhaUtilizador(Utilizador utilizador, String novaSenha) {
+		setup();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Utilizador utilizadorDB = session.get(Utilizador.class, utilizador.getId());
+		utilizadorDB.setPassword(novaSenha);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	protected Profissional lerProfissional(String email){
+		setup();
+		Session session = sessionFactory.openSession();
+
+		Profissional profissional = session.createQuery("from Profissional u where u.email = :email", Profissional.class)
+					.setParameter("email", email)
+					.getSingleResult();
+
+		session.close();
+		return profissional;
+
+	}
+
+	protected Cliente lerCliente(String email){
+		setup();
+		Session session = sessionFactory.openSession();
+
+		Cliente cliente = session.createQuery("from Cliente u where u.email = :email", Cliente.class)
+					.setParameter("email", email)
+					.getSingleResult();
+
+		session.close();
+		return cliente;
+
 	}
 
 	protected Utilizador lerUtilizador(String email){
@@ -61,6 +115,20 @@ public class GereDados {
 		session.close();
 		return utilizador;
 
+	}
+
+	protected List<Servico> lerServicos(UUID id){
+		setup();
+		Session session = sessionFactory.openSession();
+
+		Profissional profissional = session.get(Profissional.class, id);
+		List<Servico> lista = new ArrayList<Servico>();
+		lista = session.createQuery("from Servico u where u.profissional = :profissional_id", Servico.class)
+				.setParameter("profissional_id", profissional)
+				.getResultList();
+
+		session.close();
+		return lista;
 	}
 	
 	protected void deletar(Object object) {
@@ -86,14 +154,31 @@ public class GereDados {
 	    Avaliacao avaliacao = new Avaliacao(5, "Otimo serviço!", solicitacao);
 	       
 	
+		Servico servico = new Servico();
+		servico.setData(LocalDateTime.now());
+		servico.setDescricao("Ensinamento de Matemática básica para alunos do fundamental");
+		servico.setProfissional(null);
+		servico.setTitulo("Professor Particular");
+		servico.setValorHora(15.2);
+
 		//Create
-	    //gere.inserir(cliente);
+	    //gere.inserir(profissional2);
+
 		//Read
-		Utilizador divaldo = gere.lerUtilizador("DIVALD@gmail.com");
+		//Utilizador divaldo = gere.lerUtilizador("devysson@gmail.com");
+
 		//Update
 		//gere.alterarNomeUtilizador(divaldo, "divaldinho");
-		//Delete
-		gere.deletar(divaldo);
+		gere.alterarSenhaUtilizador(gere.lerProfissional("joaoMesquista@gmail.com"), "dilvadinho");
+		
+		//List<Servico> servicos = gere.lerServicos(prof.getId());
+		//System.out.println(servicos);
 
-	}
+		//Delete
+		//gere.deletar(gere.lerProfissional("joaoMesquista@gmail.com"));
+		
+		//para inserir Servico, é preciso ler o profissional antes
+		//Profissional prof = gere.lerProfissional("joaoMesquista@gmail.com");
+		//gere.inserirServico(prof, servico);
+	}	
 }
