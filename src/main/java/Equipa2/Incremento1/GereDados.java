@@ -199,11 +199,11 @@ public class GereDados {
 	 
 	public static void main(String[] args) {
 		LocalDateTime data = LocalDateTime.now();
-	    GereDados gereDados = new GereDados();
-	    Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", UserType.CLIENTE, MetodoPagamento.MBWAY);
-	    Profissional profissional = new Profissional("Devysson", "devyssonsc@gmail.com", "senha123", "Porto", UserType.PROFISSIONAL, "Programação", 5, MetodoPagamento.MBWAY);
-	    Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", UserType.PROFISSIONAL, "Programação", 5, MetodoPagamento.MBWAY);
-	    Solicitacao solicitacao = new Solicitacao(cliente, profissional, data);
+    GereDados gereDados = new GereDados();
+    Cliente cliente = new Cliente("DILVADO", "DIVALD@gmail.com", "DIDI", "divaldo's home", UserType.CLIENTE, MetodoPagamento.MBWAY);
+    Profissional profissional = new Profissional("Devysson", "devyssonsc@gmail.com", "senha123", "Porto", UserType.PROFISSIONAL, "Programação", 5, MetodoPagamento.MBWAY);
+    Profissional profissional2 = new Profissional("Joao", "joaoMesquista@gmail.com", "senha123", "Porto", UserType.PROFISSIONAL, "Programação", 5, MetodoPagamento.MBWAY);
+    Solicitacao solicitacao = new Solicitacao(cliente, profissional, data);
 	       
 	
 		Servico servico = new Servico();

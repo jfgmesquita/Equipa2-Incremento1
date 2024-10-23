@@ -264,6 +264,7 @@ public class MenuPrincipal {
                                     } while(codigo.isEmpty());
                                     
                                     Admin admin = gere.iniciarSessaoAdmin(emaila, passworda);
+                                  
                                     if(admin != null) {
                                         System.out.println("Sessão iniciada com sucesso.");
                                         MenuAdmin.main(admin, gere);

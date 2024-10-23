@@ -137,7 +137,6 @@ public class MenuAdmin {
                     System.out.println("Solicitações:");
                     gere.consultarSolicitacoes();
                     break;
-
                 case 9:
                     System.out.println("Serviços:");
                     gere.consultarServicosDisponiveis();
