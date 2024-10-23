@@ -66,7 +66,7 @@ public class MenuAdmin {
                         codigo = scanner.nextLine();
                     } while(codigo.isEmpty() || codigo.length() < 5);
 
-                    Admin novoAdmin = new Admin(nome, email, password, morada, codigo);
+                    Admin novoAdmin = new Admin(nome, email, password, morada, UserType.ADMINISTRADOR, codigo);
                     gere.registarAdmin(novoAdmin);
                     System.out.println("Admin registado com sucesso!");
 
@@ -137,7 +137,6 @@ public class MenuAdmin {
                     System.out.println("Solicitações:");
                     gere.consultarSolicitacoes();
                     break;
-                    
                 case 9:
                     System.out.println("Serviços:");
                     gere.consultarServicosDisponiveis();

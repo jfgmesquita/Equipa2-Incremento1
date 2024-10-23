@@ -19,8 +19,8 @@ public class Admin extends Utilizador {
      * @param morada   Morada do administrador.
      * @param codigo   Código do administrador.
      */
-    public Admin(String nome, String email, String password, String morada, String codigo) {
-        super(nome, email, password, morada);
+    public Admin(String nome, String email, String password, String morada, UserType userType, String codigo) {
+        super(nome, email, password, morada, userType);
         this.codigo = codigo;
     }
     

@@ -27,8 +27,8 @@ public class Cliente extends Utilizador {
      * @param morada a morada do cliente
      * @param formaDePagamento a forma de pagamento do cliente
      */
-    public Cliente(String nome, String email, String password, String morada, MetodoPagamento formaDePagamento) {
-        super(nome, email, password, morada);
+    public Cliente(String nome, String email, String password, String morada, UserType userType, MetodoPagamento formaDePagamento) {
+        super(nome, email, password, morada, userType);
         this.formaDePagamento = formaDePagamento;
         solicitacoes = new ArrayList<Solicitacao>();
     }

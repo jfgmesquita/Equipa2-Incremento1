@@ -48,12 +48,11 @@ public class Solicitacao {
      * @param morada		Endereço do local.
      * @param data			Data e horas.
      */
-    public Solicitacao(Cliente cliente, Profissional profissional, String morada, Pagamento pagamento, LocalDateTime data) {
+    public Solicitacao(Cliente cliente, Profissional profissional, LocalDateTime data) {
         id = UUID.randomUUID();
         this.cliente = cliente;
         this.profissional = profissional;
-        this.morada = morada;
-		this.pagamento = pagamento;
+        this.morada = cliente.getMorada();
         status = StatusServico.PENDENTE;
         this.data = data;
     }
