@@ -1,7 +1,6 @@
 package Equipa2.Incremento1;
 
 import java.util.UUID;
-import java.io.Serializable;
 import jakarta.persistence.*;
 
 /**
