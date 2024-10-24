@@ -108,9 +108,8 @@ public class MenuCliente {
                         System.out.println("Não existem profissionais que façam esse tipo de serviço.");
                     } else {
                         for (Servico serv : listaFiltrada) {
-                            System.out.println((listaFiltrada.indexOf(serv) + 1) + ") "
-                                    + serv.getProfissional().getNome() + " - " + serv.getTitulo() + "("
-                                    + serv.getDescricao() + ") - " + serv.getValorHora() + " Euros");
+                            System.out.println(serv.getProfissional().getNome() + " - " + serv.getTitulo() + "("
+                                             + serv.getDescricao() + ") - " + serv.getValorHora() + " Euros");
                         }
                     }
             }
