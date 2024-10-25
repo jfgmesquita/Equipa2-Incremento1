@@ -214,25 +214,25 @@ public class GereDados {
 		servico.setValorHora(15.2);
 
 		//Create
-	    gereDados.inserir(profissional);
-	    gereDados.inserir(profissional2);
-	    gereDados.inserir(cliente);
+	    // gereDados.inserir(profissional);
+	    // gereDados.inserir(profissional2);
+	    // gereDados.inserir(cliente);
 
 		//Read
 		//Utilizador divaldo = gere.lerUtilizador("devysson@gmail.com");
 
 		//Update
 		//gere.alterarNomeUtilizador(divaldo, "divaldinho");
-		// gere.alterarSenhaUtilizador(gere.lerProfissional("joaoMesquista@gmail.com"), "dilvadinho");
+		// gereDados.alterarSenhaUtilizador(gereDados.lerProfissional("divaldodias@gmail.com"), "Paula#123");
 		
 		//List<Servico> servicos = gere.lerServicos(prof.getId());
 		//System.out.println(servicos);
 
 		//Delete
-		//gere.deletar(gere.lerProfissional("joaoMesquista@gmail.com"));
+		gereDados.deletar(gereDados.lerProfissional("divaldodias@gmail.com"));
 		
 		//para inserir Servico, é preciso ler o profissional antes
-		Profissional prof = gereDados.lerProfissional("devyssonsc@gmail.com");
-		gereDados.inserirServico(prof, servico);
+		// Profissional prof = gereDados.lerProfissional("devyssonsc@gmail.com");
+		// gereDados.inserirServico(prof, servico);
 	}	
 }
