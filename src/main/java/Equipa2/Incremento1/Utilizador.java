@@ -34,6 +34,7 @@ public class Utilizador {
 
     private String morada;
 
+    @Enumerated(EnumType.STRING)
     private UserType UserType;
 
     /**

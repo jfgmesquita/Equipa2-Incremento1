@@ -18,7 +18,7 @@ public class Solicitacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-      private UUID id;
+    private UUID id;
 
     @Enumerated(EnumType.STRING)
     private StatusServico status;
@@ -34,8 +34,8 @@ public class Solicitacao {
     @Column(name = "morada")
     private String morada;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Pagamento pagamento;
+	// @OneToOne(cascade = CascadeType.ALL)
+	// private Pagamento pagamento;
 
     @Column(name = "data")
     private LocalDateTime data;
@@ -49,7 +49,6 @@ public class Solicitacao {
      * @param data			Data e horas.
      */
     public Solicitacao(Cliente cliente, Profissional profissional, LocalDateTime data) {
-        id = UUID.randomUUID();
         this.cliente = cliente;
         this.profissional = profissional;
         this.morada = cliente.getMorada();
